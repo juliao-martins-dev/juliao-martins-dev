@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 👋 Hi, I'm Julião
 
-## Getting Started
+Frontend Developer | IT Collaborator at **[Viettel Telemor](https://telemor.tl/)**  
+Part of the **Software Development Team**
 
-First, run the development server:
+![Frontend Developer](https://img.shields.io/badge/Role-Frontend%20Developer-blue)
+![IT Collaborator](https://img.shields.io/badge/IT-Collaborator-success)
+![Company](https://img.shields.io/badge/Company-Viettel%20Telemor-red)
+![Tech & AI](https://img.shields.io/badge/Focus-Tech%20%26%20AI-purple)
+![AI Assisted Development](https://img.shields.io/badge/AI-Assisted%20Development-Enabled-brightgreen)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 About Me | Kona-ba Ha'u
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+I am a **Frontend Developer** collaborating with **Viettel Telemor**, focusing on building modern, scalable, and user-centric digital products.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Ha'u mak **IT Collaborator** iha Viettel Telemor, servisu hanesan **Frontend Developer**, ho posição ba teknolojia foun no AI.
 
-## Learn More
+I enjoy transforming ideas into clean UI, smooth animations, and efficient frontend architecture.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠 Tech Stack | Skill Tekniku
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Core Technologies
+![My Skills](https://skillicons.dev/icons?i=react,nextjs,reactnative,tailwind,js,ts,html,css,git,github,figma)
 
-## Deploy on Vercel
+### Styling & Animation
+- **Tailwind CSS**
+- **GSAP (GreenSock Animation Platform)**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### AI-Assisted Development
+- Enhance code and UI/UX with **AI Prompting**
+- Daily workflow using **AI Copilot** for faster, cleaner, and smarter development
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📊 GitHub Statistics
+
+![Julião's GitHub Stats](https://github-readme-stats.vercel.app/api?username=USERNAME_GITHUB_ANDA&show_icons=true&theme=default)
+
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=USERNAME_GITHUB_ANDA&layout=compact)
+
+![GitHub Streak](https://streak-stats.demolab.com?user=USERNAME_GITHUB_ANDA)
+
+---
+
+## 🤖 Tech & AI Enthusiasm | Entusiasmu ba Teknologia no AI
+
+I am highly enthusiastic about **Technology and Artificial Intelligence**.  
+I believe AI is not replacing developers, but **amplifying creativity, productivity, and code quality**.
+
+Ha'u haksolok aprende no explora AI atu ajuda:
+- Improve frontend performance
+- Optimize design systems
+- Generate better development workflows
+
+---
+
+## 💡 What I Do in the Team | Papel iha Team
+
+- Develop responsive and performant frontend applications
+- Collaborate closely with backend, QA, and product teams
+- Translate UI/UX designs into production-ready code
+- Continuously improve codebase with modern tools and AI assistance
+
+---
+
+## 🌱 Always Learning | Aprende Kontinua
+
+Technology never stops — and neither do I.
+
+Ha'u kontinua aprende:
+- New frontend patterns
+- Performance optimization
+- AI-driven development tools
+- Better user experience strategies
+
+---
+
+## 📫 Let's Connect | Kontaktu
+
+If you want to collaborate, discuss frontend, or talk about tech & AI — feel free to reach out.
+
+**Together, we build better digital experiences.**
+
+---
+
+> *"Build fast. Build clean. Build smart — with tech and AI."*
+
+
