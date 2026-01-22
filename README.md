@@ -22,7 +22,7 @@ Part of the **Software Development Team**
 
 ## 🚀 About Me | Kona-ba Ha'u
 
-I am a **Frontend Developer** collaborating with **Viettel Telemor**, focusing on building modern, scalable, and user-centric digital products.
+I am a **Frontend Developer** collaborating with [**Viettel Telemor**](https://telemor.tl/), focusing on building modern, scalable, and user-centric digital products.
 
 Ha'u mak **IT Collaborator** iha Viettel Telemor, servisu hanesan **Frontend Developer**, ho posição ba teknolojia foun no AI.
 
