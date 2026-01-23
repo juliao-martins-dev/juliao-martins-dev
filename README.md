@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 👋 Hi, I'm Julião
 
-## Getting Started
+Frontend Developer | IT Collaborator at **[Viettel Telemor](https://telemor.tl/)**  
+Part of the **Software Development Team**
 
-First, run the development server:
+[![Portfolio](https://img.shields.io/badge/Portfolio-Visit%20Website-blue?style=for-the-badge&logo=vercel)](https://juliao-martins-dev.vercel.app/)
+[![Frontend Developer](https://img.shields.io/badge/Role-Frontend%20Developer-blue)](#)
+[![IT Collaborator](https://img.shields.io/badge/IT-Collaborator-success)](#)
+[![Company](https://img.shields.io/badge/Company-Viettel%20Telemor-red)](#)
+[![Tech & AI](https://img.shields.io/badge/Focus-Tech%20%26%20AI-purple)](#)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌐 Portfolio Website
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+👉 **Live Portfolio:**  
+🔗 https://juliao-martins-dev.vercel.app/
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+[![Portfolio Preview](https://api.microlink.io/?url=https://juliao-martins-dev.vercel.app/&screenshot=true&meta=false&embed=screenshot.url)](https://juliao-martins-dev.vercel.app/)
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 About Me | Kona-ba Ha'u
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+I am a **Frontend Developer** collaborating with [**Viettel Telemor**](https://telemor.tl/), focusing on building modern, scalable, and user-centric digital products.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Ha'u mak **IT Collaborator** iha Viettel Telemor, servisu hanesan **Frontend Developer**, ho posição ba teknolojia foun no AI.
 
-## Deploy on Vercel
+I enjoy transforming ideas into clean UI, smooth animations, and efficient frontend architecture.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠 Tech Stack | Skill Tekniku
+
+### Core Technologies
+![My Skills](https://skillicons.dev/icons?i=react,nextjs,reactnative,tailwind,js,ts,html,css,git,github,figma)
+
+### Styling & Animation
+- **Tailwind CSS**
+- **GSAP (GreenSock Animation Platform)**
+
+### AI-Assisted Development
+- AI Prompting for UI & logic enhancement
+- Daily workflow with **AI Copilot**
+- Faster iteration, cleaner architecture
+
+---
+
+## 📊 GitHub Statistics
+
+![Julião's GitHub Stats](https://github-readme-stats.vercel.app/api?username=juliao-martins-dev&show_icons=true&theme=default)
+
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=juliao-martins-dev&layout=compact)
+
+![GitHub Streak](https://streak-stats.demolab.com?user=juliao-martins-dev)
+
+---
+
+## 🤖 Tech & AI Enthusiasm | Entusiasmu ba Teknologia no AI
+
+I strongly believe AI **enhances developers**, not replaces them.
+
+Ha'u uza AI atu:
+- Improve frontend performance
+- Optimize design systems
+- Build smarter development workflows
+
+---
+
+## 💡 What I Do in the Team | Papel iha Team
+
+- Develop responsive & performant frontend applications
+- Collaborate with backend, QA, and product teams
+- Translate UI/UX designs into production-ready code
+- Continuously refactor with modern tools & AI support
+
+---
+
+## 🌱 Always Learning | Aprende Kontinua
+
+Technology never stops — and neither do I.
+
+- Frontend architecture
+- Performance optimization
+- AI-driven development
+- UX & accessibility best practices
+
+---
+
+## 📫 Let's Connect | Kontaktu
+
+🌐 Portfolio: https://juliao-martins-dev.vercel.app/  
+💬 Open for collaboration & tech discussions
+
+---
+
+> *"Build fast. Build clean. Build smart — with tech and AI."*
