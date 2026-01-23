@@ -9,8 +9,9 @@ export default function Model() {
   const { scene } = useGLTF('/my_computer.glb')
 
   const [scrollY, setScrollY] = useState(0)
+  const [footerTop, setFooterTop] = useState(null)
 
-  // Ambil nilai scroll
+  // Ambil scrollY
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY)
@@ -20,12 +21,34 @@ export default function Model() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Update rotasi setiap frame
-  useFrame(() => {
-    if (modelRef.current) {
-      modelRef.current.rotation.y = scrollY * 0.005
-    //   modelRef.current.rotation.x = scrollY * 0.002
+  // Ambil posisi footer (sekali saja)
+  useEffect(() => {
+    const footer = document.querySelector('.footer')
+    if (footer) {
+      setFooterTop(footer.offsetTop)
     }
+  }, [])
+
+  // Update rotasi per frame
+  useFrame(() => {
+    if (!modelRef.current || footerTop === null) return
+
+    const footerStart = footerTop - window.innerHeight
+
+    // ATAS (scrollY = 0)
+    if (scrollY <= 0) {
+      modelRef.current.rotation.y = 0
+      return
+    }
+
+    // BAWAH (sudah sampai footer)
+    if (scrollY >= footerStart) {
+      modelRef.current.rotation.y = 0
+      return
+    }
+
+    // ZONA AKTIF (scroll di tengah)
+    modelRef.current.rotation.y = scrollY * 0.005
   })
 
   return (
