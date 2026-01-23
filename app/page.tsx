@@ -5,6 +5,8 @@ import axios from "axios";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Scene from "@/components/Scene";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -120,6 +122,13 @@ export default function PortfolioPage() {
           </div>
         </div>
       </nav>
+
+      {/* 3d model */}
+      <main className="fixed bottom-20 left-[50%] -translate-x-[50%]">
+        <section style={{ height: '100px' }}>
+          <Scene />
+        </section>
+      </main>
 
       {/* Home */}
       <section
