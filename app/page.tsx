@@ -293,7 +293,7 @@ export default function PortfolioPage() {
       </button>
 
       <footer className="footer text-center py-6 text-sm text-gray-500">
-        © {new Date().getFullYear()} Julião. All rights reserved.
+        © {new Date().getFullYear()} Julião Martins. Turning ideas into reliable digital products.
       </footer>
     </main>
   );
