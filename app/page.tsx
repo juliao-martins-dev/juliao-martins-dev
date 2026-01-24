@@ -118,6 +118,7 @@ export default function PortfolioPage() {
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
+            <a href="#gallery">Gallery</a>
             <a href="#contact">Contact</a>
           </div>
         </div>
@@ -207,6 +208,7 @@ export default function PortfolioPage() {
 
       {/* Horizontal Gallery */}
       <section
+        id="gallery"
         ref={galleryRef}
         className="relative h-screen overflow-hidden bg-white"
       >
