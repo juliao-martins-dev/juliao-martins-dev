@@ -9,7 +9,7 @@ export default function Model() {
   const { scene } = useGLTF('/my_computer.glb')
 
   const [scrollY, setScrollY] = useState<number>(0)
-  const [footerTop, setFooterTop] = useState<number | null>(null)
+  const [footerTop, setFooterTop] = useState(null)
 
   useEffect(() => {
     const handleScroll = () => {
