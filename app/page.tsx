@@ -21,15 +21,21 @@ const unsplashImages = [
   "1500534314209-a25ddb2bd429",
 ];
 
+interface FormData {
+  username: string;
+  email: string;
+  message: string;
+}
+
 
 export default function PortfolioPage() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     username: "",
     email: "",
     message: "",
   });
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
 
   const galleryRef = useRef<HTMLDivElement | null>(null);
   const galleryTrackRef = useRef<HTMLDivElement | null>(null);
