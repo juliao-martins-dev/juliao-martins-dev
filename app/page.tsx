@@ -29,6 +29,7 @@ interface FormData {
 
 
 export default function PortfolioPage() {
+  const [open, setOpen] = useState<boolean>(false);
   const [formData, setFormData] = useState<FormData>({
     username: "",
     email: "",
@@ -119,13 +120,64 @@ export default function PortfolioPage() {
       <nav className="fixed top-0 w-full bg-white shadow z-50">
         <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
           <h1 className="font-bold text-xl">Julião Martins</h1>
-          <div className="space-x-6">
+          {/* Desktop Menu */}
+          <div className="space-x-6 hidden md:flex">
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
             <a href="#gallery">Gallery</a>
             <a href="#contact">Contact</a>
+          </div>
+
+          {/* Hamburger Button (Mobile) */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="md:hidden flex flex-col gap-1 focus:outline-none"
+            aria-label="Toggle Menu"
+          >
+            <span
+              className={`h-0.5 w-6 bg-black transition ${
+                open ? "rotate-45 translate-y-1.5" : ""
+              }`}
+            />
+            <span
+              className={`h-0.5 w-6 bg-black transition ${
+                open ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`h-0.5 w-6 bg-black transition ${
+                open ? "-rotate-45 -translate-y-1.5" : ""
+              }`}
+            />
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden bg-white shadow transition-all duration-300 overflow-hidden ${
+            open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="flex flex-col px-6 py-4 space-y-4">
+            {[
+              ["Home", "#home"],
+              ["About", "#about"],
+              ["Projects", "#projects"],
+              ["Skills", "#skills"],
+              ["Gallery", "#gallery"],
+              ["Contact", "#contact"],
+            ].map(([label, link]) => (
+              <a
+                key={label}
+                href={link}
+                onClick={() => setOpen(false)}
+                className="text-gray-700 hover:text-black"
+              >
+                {label}
+              </a>
+            ))}
           </div>
         </div>
       </nav>
