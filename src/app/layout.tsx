@@ -1,5 +1,7 @@
 import React from "react";
 
+import { NextIntlClientProvider } from "next-intl";
+
 import "./globals.css";
 
 export default function RootLayout({
@@ -9,7 +11,7 @@ export default function RootLayout({
 }) {
   return <html>
     <body>
-      {children}
+      <NextIntlClientProvider>{children}</NextIntlClientProvider>
     </body>
   </html>
 }

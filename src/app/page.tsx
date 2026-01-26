@@ -6,6 +6,8 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Scene from "@/components/Scene";
+import { useTranslations } from "next-intl";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -29,6 +31,7 @@ interface FormData {
 
 
 export default function PortfolioPage() {
+  const t = useTranslations();
   const [open, setOpen] = useState<boolean>(false);
   const [formData, setFormData] = useState<FormData>({
     username: "",
@@ -104,10 +107,10 @@ export default function PortfolioPage() {
         }
       );
 
-      setMessage("✓ Pesan berhasil dikirim!");
+      setMessage(t("contact.success"));
       setFormData({ username: "", email: "", message: "" });
     } catch (error) {
-      setMessage("✗ Gagal mengirim pesan. Silahkan coba lagi.");
+      setMessage(t("contact.error"));
       console.error(error);
     } finally {
       setLoading(false);
@@ -122,12 +125,15 @@ export default function PortfolioPage() {
           <h1 className="font-bold text-xl">Julião Martins</h1>
           {/* Desktop Menu */}
           <div className="space-x-6 hidden md:flex">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#contact">Contact</a>
+            <a href="#home">{t("nav.home")}</a>
+            <a href="#about">{t("nav.about")}</a>
+            <a href="#projects">{t("nav.projects")}</a>
+            <a href="#skills">{t("nav.skills")}</a>
+            <a href="#gallery">{t("nav.gallery")}</a>
+            <a href="#contact">{t("nav.contact")}</a>
+            <div className="flex items-center gap-4">
+              <LanguageSwitcher />
+            </div>
           </div>
 
           {/* Hamburger Button (Mobile) */}
@@ -162,12 +168,12 @@ export default function PortfolioPage() {
         >
           <div className="flex flex-col px-6 py-4 space-y-4">
             {[
-              ["Home", "#home"],
-              ["About", "#about"],
-              ["Projects", "#projects"],
-              ["Skills", "#skills"],
-              ["Gallery", "#gallery"],
-              ["Contact", "#contact"],
+              [t("nav.home"), "#home"],
+              [t("nav.about"), "#about"],
+              [t("nav.projects"), "#projects"],
+              [t("nav.skills"), "#skills"],
+              [t("nav.gallery"), "#gallery"],
+              [t("nav.contact"), "#contact"],
             ].map(([label, link]) => (
               <a
                 key={label}
@@ -178,6 +184,9 @@ export default function PortfolioPage() {
                 {label}
               </a>
             ))}
+            <div className="flex items-center gap-4">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       </nav>
@@ -196,9 +205,9 @@ export default function PortfolioPage() {
       >
         <div className="text-center">
           <Image src="/juliao_martins.jpg" priority alt="Juliao Martins" width={200} height={200} className="w-52 h-52 mx-auto mb-3 object-cover object-top rounded-full border-2 border-red-950" />
-          <h2 className="text-4xl font-bold mb-4">Hi, I'm Julião</h2>
+          <h2 className="text-4xl font-bold mb-4">{t("home.title")}</h2>
           <p className="text-gray-600 mb-6">
-            Junior Mobile Developer | Next.js | TailwindCSS
+            {t("home.subtitle")}
           </p>
         </div>
       </section>
@@ -208,10 +217,9 @@ export default function PortfolioPage() {
         id="about"
         className="min-h-screen max-w-6xl mx-auto px-6 py-24"
       >
-        <h3 className="text-3xl font-bold mb-6">About Me</h3>
+        <h3 className="text-3xl font-bold mb-6">{t("about.title")}</h3>
         <p className="text-gray-600">
-          I am a junior mobile developer who focuses on building clean,
-          responsive, and scalable applications.
+          {t("about.description")}
         </p>
       </section>
 
@@ -221,15 +229,15 @@ export default function PortfolioPage() {
         className="min-h-screen bg-gray-50 px-6 py-24"
       >
         <div className="max-w-6xl mx-auto">
-          <h3 className="text-3xl font-bold mb-10">Projects</h3>
+          <h3 className="text-3xl font-bold mb-10">{t("projects.title")}</h3>
           <div className="grid md:grid-cols-3 gap-6">
             {[1, 2, 3].map((p) => (
               <div key={p} className="bg-white p-6 rounded-xl shadow">
                 <h4 className="font-semibold text-xl mb-2">
-                  Project {p}
+                  {t("projects.itemTitle", {number: p})}
                 </h4>
                 <p className="text-gray-600 text-sm">
-                  Project description here.
+                  {t("projects.itemDescription")}
                 </p>
               </div>
             ))}
@@ -242,7 +250,7 @@ export default function PortfolioPage() {
         id="skills"
         className="min-h-screen max-w-6xl mx-auto px-6 py-24"
       >
-        <h3 className="text-3xl font-bold mb-8">Skills</h3>
+        <h3 className="text-3xl font-bold mb-8">{t("skills.title")}</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             "JavaScript",
@@ -300,26 +308,26 @@ export default function PortfolioPage() {
         className="min-h-screen bg-gray-50 px-6 py-24"
       >
         <div className="max-w-xl mx-auto">
-          <h3 className="text-3xl font-bold mb-6">Contact Me</h3>
+          <h3 className="text-3xl font-bold mb-6">{t("contact.title")}</h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
-              name="username"
-              placeholder="Username"
+              name={t("contact.form.username")}
+              placeholder={t("contact.form.username")}
               value={formData.username}
               onChange={handleInputChange}
               className="w-full border p-3 rounded"
             />
             <input
-              name="email"
+              name={t("contact.form.email")}
               type="email"
-              placeholder="Email"
+              placeholder={t("contact.form.email")}
               value={formData.email}
               onChange={handleInputChange}
               className="w-full border p-3 rounded"
             />
             <textarea
-              name="message"
-              placeholder="Message"
+              name={t("contact.form.message")}
+              placeholder={t("contact.form.message")}
               value={formData.message}
               onChange={handleInputChange}
               className="w-full border p-3 rounded h-32"
@@ -328,7 +336,7 @@ export default function PortfolioPage() {
               disabled={loading}
               className="w-full bg-blue-600 text-white py-3 rounded"
             >
-              {loading ? "Sending..." : "Send Message"}
+              {loading ? t("contact.form.sending") : t("contact.form.send")}
             </button>
             {message && (
               <p className="text-center text-sm font-medium">
@@ -351,7 +359,7 @@ export default function PortfolioPage() {
       </button>
 
       <footer className="footer text-center py-6 text-sm text-gray-500">
-        © {new Date().getFullYear()} Julião Martins. Turning ideas into reliable digital products.
+        © {new Date().getFullYear()} Julião Martins. {t("footer.text")}
       </footer>
     </main>
   );
