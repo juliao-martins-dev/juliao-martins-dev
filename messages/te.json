@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Uma",
+    "about": "Kona-ba Hau",
+    "projects": "Projetu sira",
+    "skills": "Habilidade sira",
+    "gallery": "Galeria",
+    "contact": "Kontaktu"
+  },
+
+  "home": {
+    "title": "Olá, ha'u Julião",
+    "subtitle": "Junior Mobile Developer | Next.js | TailwindCSS"
+  },
+
+  "about": {
+    "title": "Kona-ba Hau",
+    "description": "Hau mak junior mobile developer ne'ebé foka ba halo aplikasaun ne'ebé moos, responsivu no bele dezenvolve."
+  },
+
+  "projects": {
+    "title": "Projetu sira",
+    "itemTitle": "Projetu {number}",
+    "itemDescription": "Deskrisaun projetu iha ne'e."
+  },
+
+  "skills": {
+    "title": "Abilidade sira"
+  },
+
+  "gallery": {
+    "imageAlt": "Galeria {number}"
+  },
+
+  "contact": {
+    "title": "Kontaktu Hau",
+    "form": {
+      "username": "Naran Uzuáriu",
+      "email": "Email",
+      "message": "Mensajen",
+      "send": "Haruka Mensajen",
+      "sending": "Helo hela..."
+    },
+    "success": "✓ Mensajen haruka ho susesu!",
+    "error": "✗ La konsege haruka mensajen. Favor koko fali."
+  },
+
+  "footer": {
+    "text": "Troka ideia sira sai ba produtu dijital ne'ebé fiável."
+  }
+}

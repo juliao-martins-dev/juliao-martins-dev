@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "gallery": "Gallery",
+    "contact": "Contact"
+  },
+
+  "home": {
+    "title": "Hi, I'm Julião",
+    "subtitle": "Junior Mobile Developer | Next.js | TailwindCSS"
+  },
+
+  "about": {
+    "title": "About Me",
+    "description": "I am a junior mobile developer who focuses on building clean, responsive, and scalable applications."
+  },
+
+  "projects": {
+    "title": "Projects",
+    "itemTitle": "Project {number}",
+    "itemDescription": "Project description here."
+  },
+
+  "skills": {
+    "title": "Skills"
+  },
+
+  "gallery": {
+    "imageAlt": "Gallery {number}"
+  },
+
+  "contact": {
+    "title": "Contact Me",
+    "form": {
+      "username": "Username",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send Message",
+      "sending": "Sending..."
+    },
+    "success": "✓ Message sent successfully!",
+    "error": "✗ Failed to send message. Please try again."
+  },
+
+  "footer": {
+    "text": "Turning ideas into reliable digital products."
+  }
+}
