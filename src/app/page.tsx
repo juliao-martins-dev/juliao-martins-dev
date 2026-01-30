@@ -104,14 +104,14 @@ const skills = [
 ];
 
 const galleryItems = [
-  { type: "image", src: "/job/1.jpg" },
-  { type: "image", src: "/job/2.jpg" },
-  { type: "image", src: "/job/3.jpg" },
-  { type: "image", src: "/job/4.gif", poster: "/job/4.jpg" },
-  { type: "image", src: "/job/5.jpg" },
-  { type: "video", src: "/job/6.mp4", poster: "/job/6.jpg" },
-  { type: "image", src: "/job/7.jpg" },
-  { type: "image", src: "/job/8.jpg" },
+  { type: "image", src: "/1.jpg" },
+  { type: "image", src: "/2.jpg" },
+  { type: "image", src: "/3.jpg" },
+  { type: "image", src: "/4.gif", poster: "/4.jpg" },
+  { type: "image", src: "/5.jpg" },
+  { type: "video", src: "/6.mp4", poster: "/6.jpg" },
+  { type: "image", src: "/7.jpg" },
+  { type: "image", src: "/8.jpg" },
 ];
 
 
