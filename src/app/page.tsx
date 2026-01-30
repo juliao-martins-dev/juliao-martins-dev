@@ -107,9 +107,9 @@ const galleryItems = [
   { type: "image", src: "/1.jpg" },
   { type: "image", src: "/2.jpg" },
   { type: "image", src: "/3.jpg" },
-  { type: "image", src: "/4.gif", poster: "/4.jpg" },
+  { type: "image", src: "/4.gif" },
   { type: "image", src: "/5.jpg" },
-  { type: "video", src: "/6.mp4", poster: "/6.jpg" },
+  { type: "image", src: "/6.gif" },
   { type: "image", src: "/7.jpg" },
   { type: "image", src: "/8.jpg" },
 ];
@@ -423,25 +423,13 @@ export default function PortfolioPage() {
               className="w-[25vw] shrink-0 p-6 box-content flex items-center justify-center"
             >
               <div className="relative aspect-square w-full">
-                {item.type === "image" ? (
-                  <Image
-                    src={item.src}
-                    alt={`Gallery ${i + 1}`}
-                    fill
-                    className="object-cover rounded-xl shadow-lg"
-                    sizes="25vw"
-                  />
-                ) : (
-                  <video
-                    src={item.src}
-                    poster={item.poster}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover rounded-xl shadow-lg"
-                  />
-                )}
+                <Image
+                  src={item.src}
+                  alt={`Gallery ${i + 1}`}
+                  fill
+                  className="object-cover rounded-xl shadow-lg"
+                  sizes="25vw"
+                />
               </div>
             </div>
           ))}
