@@ -1,9 +1,9 @@
 {
   "nav": {
-    "home": "Uma",
-    "about": "Kona-ba Hau",
-    "projects": "Projetu sira",
-    "skills": "Habilidade sira",
+    "home": "Veranda",
+    "about": "Konaba Hau",
+    "projects": "Projetu",
+    "skills": "Abilidade",
     "gallery": "Galeria",
     "contact": "Kontaktu"
   },
@@ -14,7 +14,7 @@
   },
 
   "about": {
-    "title": "Kona-ba Hau",
+    "title": "Konaba Hau",
     "description": "Hau mak junior mobile developer ne'ebé foka ba halo aplikasaun ne'ebé moos, responsivu no bele dezenvolve."
   },
 
@@ -39,10 +39,10 @@
       "email": "Email",
       "message": "Mensajen",
       "send": "Haruka Mensajen",
-      "sending": "Helo hela..."
+      "sending": "Haruka Hela..."
     },
-    "success": "✓ Mensajen haruka ho susesu!",
-    "error": "✗ La konsege haruka mensajen. Favor koko fali."
+    "success": "✅ Mensajen haruka ho susesu!",
+    "error": "❌ La konsege haruka mensajen. Favor koko fali."
   },
 
   "footer": {
