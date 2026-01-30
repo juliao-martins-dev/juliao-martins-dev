@@ -103,15 +103,19 @@ const skills = [
   },
 ];
 
-const galleryItems = [
-  { type: "image", src: "/1.jpg" },
-  { type: "image", src: "/2.jpg" },
-  { type: "image", src: "/3.jpg" },
-  { type: "image", src: "/4.gif" },
-  { type: "image", src: "/5.jpg" },
-  { type: "image", src: "/6.gif" },
-  { type: "image", src: "/7.jpg" },
-  { type: "image", src: "/8.jpg" },
+type GalleryItem = {
+  src: string;
+}
+
+const galleryItems: GalleryItem[] = [
+  { src: "/1.jpg" },
+  { src: "/2.jpg" },
+  { src: "/3.jpg" },
+  { src: "/4.gif" },
+  { src: "/5.jpg" },
+  { src: "/6.gif" },
+  { src: "/7.jpg" },
+  { src: "/8.jpg" },
 ];
 
 
@@ -139,17 +143,6 @@ export default function PortfolioPage() {
     { label: t("nav.gallery"), href: "#gallery" },
     { label: t("nav.contact"), href: "#contact" },
   ];
-
-  /* Scroll to top button */
-  useEffect(() => {
-    const handleScroll = () => {
-      const btn = document.getElementById("scrollTop");
-      if (window.scrollY > 300) btn?.classList.remove("hidden");
-      else btn?.classList.add("hidden");
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   /* Horizontal scrolling gallery */
   useEffect(() => {
