@@ -413,7 +413,7 @@ export default function PortfolioPage() {
           {galleryItems.map((item, i) => (
             <div
               key={i}
-              className="w-[25vw] shrink-0 p-6 box-content flex items-center justify-center"
+              className="w-[min(90vw,92%)] sm:w-[30vw] lg:w-[25vw] shrink-0 p-6 box-content flex items-center justify-center"
             >
               <div className="relative aspect-square w-full">
                 <Image
