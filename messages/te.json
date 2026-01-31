@@ -15,13 +15,14 @@
 
   "about": {
     "title": "Konaba Hau",
-    "description": "Hau mak junior mobile developer ne'ebé foka ba halo aplikasaun ne'ebé moos, responsivu no bele dezenvolve."
+    "paragraph1": "Hau mak junior mobile developer ho esperiensia liu tinan rua iha área IT. Antes ne’e, hau servisu iha Leader Group hanesan IT, ne’ebé responsavel ba manutensaun hardware, networking, no sistema database ba cashier (Frontline) no back office (Backline). Hau mos suporta sistema retail boot ba empréza sira hanesan Leader Hypermarket Lda, Leader Mart Lda, CEMET Timor SA, Auto Timor Leste Lda, no Lisun Timor Lda.",
+    "paragraph2": "Agora dadaun, hau servisu hanesan IT Collaborator iha Viettel Timor Unipessoal, LDA (TELEMOR), ida husi empréza telecomunicação boot iha Timor-Leste. Hau integra iha IT Unit, liu-liu iha departamentu Software Development, ne’ebé hau servisu ona durante fulan haat. Hau agradese oportunidade ida ne’e no iha motivasaun boot atu kontinua dezenvolve hau nia abilidade hanesan mobile developer."
   },
 
   "projects": {
     "title": "Projetu sira",
     "itemTitle": "Projetu {number}",
-    "itemDescription": "Deskrisaun projetu iha ne'e."
+    "itemDescription": "Projetu konseitu ida ne'ebé ha'u kria hodi hatudu abilidade dezenvolvimentu web no mobile."
   },
 
   "skills": {

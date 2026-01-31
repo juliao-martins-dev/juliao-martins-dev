@@ -302,9 +302,16 @@ export default function PortfolioPage() {
         id="about"
         className="min-h-screen max-w-6xl mx-auto px-6 py-24"
       >
-        <h3 className="text-3xl font-bold mb-6">{t("about.title")}</h3>
+         <h3 className="text-3xl font-bold mb-6">
+          {t("about.title")}
+        </h3>
+
+        <p className="text-gray-600 mb-4">
+          {t("about.paragraph1")}
+        </p>
+
         <p className="text-gray-600">
-          {t("about.description")}
+          {t("about.paragraph2")}
         </p>
       </section>
 
