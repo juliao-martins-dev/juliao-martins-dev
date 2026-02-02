@@ -39,6 +39,7 @@ import axios from "axios";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import clsx from "clsx";
 import Scene from "@/components/Scene";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -218,15 +219,24 @@ export default function PortfolioPage() {
     }
   };
 
+  /*
+  `fixed top-0 z-50 w-full transition-all duration-300
+        ${scrolled
+          ? "bg-white/70 dark:bg-slate-900/70 backdrop-blur-lg shadow-md"
+          : "bg-transparent"
+        }`
+  */
+
   return (
     <main className="font-sans scroll-smooth">
       {/* Navbar */}
       <nav
-        className={`fixed top-0 z-50 w-full transition-all duration-300
-        ${scrolled
-          ? "bg-white/70 dark:bg-slate-900/70 backdrop-blur-lg shadow-md"
-          : "bg-transparent"
-        }`}
+        className={clsx(
+          "fixed top-0 z-50 w-full transition-all duration-300",
+          scrolled
+            ? "bg-white/70 dark:bg-slate-900/70 backdrop-blur-lg shadow-md"
+            : "bg-transparent"
+        )}
       >
         <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
           {/* Logo */}
