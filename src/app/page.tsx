@@ -163,16 +163,17 @@ export default function PortfolioPage() {
 
     gsap.fromTo(
       timelineRef.current.children,
-      { opacity: 0, y: 40 },
+      { opacity: 0, y: 60, scale: 0.95 },
       {
         opacity: 1,
         y: 0,
-        stagger: 0.25,
-        duration: 0.8,
+        scale: 1,
+        stagger: 0.3,
+        duration: 0.9,
         ease: "power3.out",
         scrollTrigger: {
           trigger: timelineRef.current,
-          start: "top 80%",
+          start: "top 75%",
         },
       }
     );
@@ -323,7 +324,7 @@ export default function PortfolioPage() {
       </nav>
 
       {/* 3d model */}
-      <main className="fixed z-10 bottom-20 left-[50%] -translate-x-[50%]">
+      <main className="fixed z-20 bottom-20 left-[50%] -translate-x-[50%]">
         <section style={{ height: '100px' }}>
           <Scene />
         </section>
@@ -357,39 +358,81 @@ export default function PortfolioPage() {
         </p>
 
         {/* Timeline */}
-        <div className="relative mt-16">
-          {/* Line */}
-          <div className="absolute top-8 left-0 right-0 h-1 bg-primary/20 rounded-full" />
+        <div className="relative mt-20">
+          {/* LINE */}
+          <div
+            className="
+              absolute z-0
+              left-5.75 top-0 bottom-0 w-px
+              bg-primary/30
+              md:left-0 md:right-0 md:top-2 md:bottom-auto
+              md:h-0.5 md:w-auto
+              md:bg-linear-to-r md:from-transparent md:via-primary/40 md:to-transparent
+            "
+          />
 
-          {/* Items */}
           <div
             ref={timelineRef}
-            className="relative flex flex-col md:flex-row justify-between gap-12"
+            className="relative z-10 flex flex-col md:flex-row justify-between gap-16"
           >
             {timeline.map((item, index) => (
               <div
                 key={index}
-                className="relative flex-1 flex flex-col items-center text-center"
+                className="
+                  relative flex-1 flex flex-col
+                  pl-12 md:pl-0
+                  md:items-center md:text-center
+                  group
+                "
               >
-                {/* Dot */}
-                <div className="z-10 mb-4 h-6 w-6 rounded-full bg-primary border-4 border-background shadow-md" />
+                {/* DOT */}
+                <div
+                  className="
+                    absolute left-4 top-4
+                    md:static md:mb-6
+                    z-10
+                  "
+                >
+                  <div className="h-4 w-4 rounded-full bg-primary shadow-sm" />
+                  <div className="absolute inset-0 rounded-full bg-primary/30 blur-md scale-150 opacity-0 transition" />
+                </div>
 
-                {/* Card */}
-                <Card className="w-full max-w-sm shadow-lg">
-                  <CardHeader>
-                    <Badge variant="secondary" className="w-fit mb-2">
+                {/* CONNECTOR (desktop only) */}
+                <div className="hidden md:block absolute top-10 h-10 w-px bg-primary/30" />
+
+                {/* CARD */}
+                <Card
+                   className="
+                    w-full max-w-sm
+                    rounded-2xl
+                    border border-border/50
+                    bg-background/80
+                    backdrop-blur
+                    shadow-md
+                    transition-all duration-300
+                    md:group-hover:-translate-y-2
+                    md:group-hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]
+                  "
+                >
+                  <CardHeader className="md:items-center">
+                    <Badge
+                      variant="secondary"
+                      className="mb-3 text-xs tracking-wide"
+                    >
                       {item.year}
                     </Badge>
-                    <CardTitle className="text-lg">
+
+                    <CardTitle className="text-lg font-semibold">
                       {item.title}
                     </CardTitle>
+
                     <p className="text-sm text-muted-foreground">
                       {item.company}
                     </p>
                   </CardHeader>
 
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
                       {item.description}
                     </p>
                   </CardContent>
@@ -405,7 +448,7 @@ export default function PortfolioPage() {
       <section
         id="projects"
         className="min-h-screen px-6 py-24
-        bg-gradient-to-b from-gray-50 to-white
+        bg-linear-to-b from-gray-50 to-white
         dark:from-slate-900 dark:to-slate-950"
       >
         <div className="max-w-6xl mx-auto">
