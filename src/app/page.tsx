@@ -25,14 +25,6 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 
 import { Menu } from "lucide-react";
-import {
-  SiTailwindcss,
-  SiNextdotjs,
-  SiReact,
-  SiDjango,
-} from "react-icons/si";
-import { RiFirebaseFill } from "react-icons/ri";
-import { IoSparklesSharp } from "react-icons/io5";
 
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
@@ -44,88 +36,27 @@ import Scene from "@/components/Scene";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ScrollToTop from "@/components/ui/ScrollToTop";
+import { skills } from "@/data/skills";
+import { galleryItems } from "@/animations/gallery";
+import { sendContactForm } from "@/lib/api/contact";
+import { ContactFormData } from "@/types/contact";
+import { animateTimeline } from "@/animations/timeline";
+import { TimelineItem } from "@/types/timeline";
 
 
 gsap.registerPlugin(ScrollTrigger);
 
 
-type TimelineItem = {
-  year: string;
-  title: string;
-  company: string;
-  description: string;
-};
-
-interface FormData {
-  Username: string;
-  Email: string;
-  Message: string;
-}
-
-const initialFormData: FormData = {
+const initialFormData: ContactFormData = {
   Username: "",
   Email: "",
   Message: "",
 };
 
-const skills = [
-  {
-    name: "Tailwind CSS",
-    label: "Utility-first CSS",
-    icon: SiTailwindcss,
-    color: "#38BDF8",
-  },
-  {
-    name: "Next.js",
-    label: "React Framework",
-    icon: SiNextdotjs,
-    color: "#000000",
-  },
-  {
-    name: "GSAP",
-    label: "Animation Library",
-    icon: IoSparklesSharp,
-    color: "#88CE02",
-  },
-  {
-    name: "React Native",
-    label: "Mobile Development",
-    icon: SiReact,
-    color: "#61DAFB",
-  },
-  {
-    name: "Firebase",
-    label: "Backend as a Service",
-    icon: RiFirebaseFill,
-    color: "#FFCA28",
-  },
-  {
-    name: "Django",
-    label: "Backend Framework",
-    icon: SiDjango,
-    color: "#092E20",
-  },
-];
-
-type GalleryItem = {
-  src: string;
-}
-
-const galleryItems: GalleryItem[] = [
-  { src: "/1.jpg" },
-  { src: "/2.jpg" },
-  { src: "/3.jpg" },
-  { src: "/4.gif" },
-  { src: "/5.jpg" },
-  { src: "/6.gif" },
-  { src: "/7.jpg" },
-  { src: "/8.jpg" },
-];
-
 
 export default function PortfolioPage() {
   const [open, setOpen] = useState<boolean>(false);
-  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
 
@@ -148,24 +79,7 @@ export default function PortfolioPage() {
   ];
 
   useEffect(() => {
-    if (!timelineRef.current) return;
-
-    gsap.fromTo(
-      timelineRef.current.children,
-      { opacity: 0, y: 60, scale: 0.95 },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        stagger: 0.3,
-        duration: 0.9,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: timelineRef.current,
-          start: "top 75%",
-        },
-      }
-    );
+    if (timelineRef.current) animateTimeline(timelineRef.current);
   }, []);
 
   /* Horizontal scrolling gallery */
@@ -209,27 +123,8 @@ export default function PortfolioPage() {
     setLoading(true);
     setMessage("");
 
-    /*
-    {
-      "data": {
-        "Username": "Juliao",
-        "Email": "juliao@fakes.cm",
-        "Message": "Hello, World!"
-      }
-    }
-    */
-
     try {
-      await axios.post(
-        "https://sheetdb.io/api/v1/iswzlnv05hdq5",
-        {
-          data: formData
-        },
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-
+      await sendContactForm(formData);
       setMessage(t("contact.success"));
       setFormData(initialFormData);
     } catch (error) {
