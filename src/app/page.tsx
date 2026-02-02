@@ -59,10 +59,16 @@ const unsplashImages = [
 ];
 
 interface FormData {
-  username: string;
-  email: string;
-  message: string;
+  Username: string;
+  Email: string;
+  Message: string;
 }
+
+const initialFormData: FormData = {
+  Username: "",
+  Email: "",
+  Message: "",
+};
 
 const skills = [
   {
@@ -121,11 +127,7 @@ const galleryItems: GalleryItem[] = [
 
 export default function PortfolioPage() {
   const [open, setOpen] = useState<boolean>(false);
-  const [formData, setFormData] = useState<FormData>({
-    username: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState<FormData>(initialFormData);
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
 
@@ -185,11 +187,21 @@ export default function PortfolioPage() {
     setLoading(true);
     setMessage("");
 
+    /*
+    {
+      "data": {
+        "Username": "Juliao",
+        "Email": "juliao@fakes.cm",
+        "Message": "Hello, World!"
+      }
+    }
+    */
+
     try {
       await axios.post(
-        "https://v1.nocodeapi.com/juliaomartins23/google_sheets/QpvkySIKGXzEhiWi?tabId=Sheet1",
+        "https://sheetdb.io/api/v1/iswzlnv05hdq5",
         {
-          row: [Object.values(formData)],
+          data: formData
         },
         {
           headers: { "Content-Type": "application/json" },
@@ -197,7 +209,7 @@ export default function PortfolioPage() {
       );
 
       setMessage(t("contact.success"));
-      setFormData({ username: "", email: "", message: "" });
+      setFormData(initialFormData);
     } catch (error) {
       setMessage(t("contact.error"));
       console.error(error);
@@ -462,9 +474,9 @@ export default function PortfolioPage() {
                   </Label>
                   <Input
                     id="username"
-                    name="username"
+                    name="Username"
                     placeholder={t("contact.form.username")}
-                    value={formData.username}
+                    value={formData.Username}
                     onChange={handleInputChange}
                     required
                   />
@@ -477,10 +489,10 @@ export default function PortfolioPage() {
                   </Label>
                   <Input
                     id="email"
-                    name="email"
+                    name="Email"
                     type="email"
                     placeholder={t("contact.form.email")}
-                    value={formData.email}
+                    value={formData.Email}
                     onChange={handleInputChange}
                     required
                   />
@@ -493,9 +505,9 @@ export default function PortfolioPage() {
                   </Label>
                   <Textarea
                     id="message"
-                    name="message"
+                    name="Message"
                     placeholder={t("contact.form.message")}
-                    value={formData.message}
+                    value={formData.Message}
                     onChange={handleInputChange}
                     className="min-h-[140px]"
                     required
