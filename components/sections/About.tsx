@@ -1,3 +1,5 @@
+"use client";
+
 import { animateTimeline } from "@/animations/timeline";
 import { TimelineItem } from "@/types/timeline";
 import { useTranslations } from "next-intl";
