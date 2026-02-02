@@ -242,7 +242,7 @@ export default function PortfolioPage() {
 
 
   return (
-    <main className="font-sans scroll-smooth">
+    <main className="font-sans scroll-smooth overflow-hidden">
       {/* Navbar */}
       <nav
         className={clsx(
@@ -259,7 +259,7 @@ export default function PortfolioPage() {
           </h1>
 
           {/* Desktop Menu */}
-          <NavigationMenu className="hidden md:flex">
+          <NavigationMenu className="hidden sm:flex">
             <NavigationMenuList className="gap-6">
               {navItems.map((item) => (
                 <NavigationMenuItem key={item.href}>
@@ -284,7 +284,7 @@ export default function PortfolioPage() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="md:hidden"
+                className="sm:hidden"
                 aria-label="Open Menu"
               >
                 <Menu className="h-5 w-5" />
