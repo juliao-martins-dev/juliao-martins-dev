@@ -2,17 +2,6 @@
 
 import { useScrollNavbar } from "@/hooks/useScrollNavbar";
 import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuList,
-  NavigationMenuLink,
-} from "@/components/ui/navigation-menu";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import {
   Card,
   CardContent,
   CardHeader,
@@ -24,17 +13,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 
-import { Menu } from "lucide-react";
 
 import { useEffect, useState, useRef } from "react";
-import axios from "axios";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import clsx from "clsx";
 import Scene from "@/components/Scene";
 import { useTranslations } from "next-intl";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import { skills } from "@/data/skills";
 import { galleryItems } from "@/animations/gallery";
@@ -42,6 +27,7 @@ import { sendContactForm } from "@/lib/api/contact";
 import { ContactFormData } from "@/types/contact";
 import { animateTimeline } from "@/animations/timeline";
 import { TimelineItem } from "@/types/timeline";
+import Navbar from "@/components/layout/Navbar";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -55,7 +41,6 @@ const initialFormData: ContactFormData = {
 
 
 export default function PortfolioPage() {
-  const [open, setOpen] = useState<boolean>(false);
   const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
@@ -67,16 +52,6 @@ export default function PortfolioPage() {
   const t = useTranslations();
   const tAbout = useTranslations("about");
   const timeline = tAbout.raw("timeline") as TimelineItem[];
-  const scrolled = useScrollNavbar();
-
-  const navItems = [
-    { label: t("nav.home"), href: "#home" },
-    { label: t("nav.about"), href: "#about" },
-    { label: t("nav.projects"), href: "#projects" },
-    { label: t("nav.skills"), href: "#skills" },
-    { label: t("nav.gallery"), href: "#gallery" },
-    { label: t("nav.contact"), href: "#contact" },
-  ];
 
   useEffect(() => {
     if (timelineRef.current) animateTimeline(timelineRef.current);
@@ -138,74 +113,7 @@ export default function PortfolioPage() {
 
   return (
     <main className="font-sans scroll-smooth overflow-hidden">
-      {/* Navbar */}
-      <nav
-        className={clsx(
-          "fixed top-0 z-50 w-full transition-all duration-300",
-          scrolled
-            ? "bg-white/70 dark:bg-slate-900/70 backdrop-blur-lg shadow-md"
-            : "bg-transparent"
-        )}
-      >
-        <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-          {/* Logo */}
-          <h1 className="text-xl font-bold tracking-tight">
-            Julião Martins
-          </h1>
-
-          {/* Desktop Menu */}
-          <NavigationMenu className="hidden sm:flex">
-            <NavigationMenuList className="gap-6">
-              {navItems.map((item) => (
-                <NavigationMenuItem key={item.href}>
-                  <NavigationMenuLink
-                    href={item.href}
-                    className="text-sm font-medium text-muted-foreground
-                    hover:text-foreground transition-colors"
-                  >
-                    {item.label}
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
-              <NavigationMenuItem>
-                <LanguageSwitcher />
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-
-          {/* Mobile Menu */}
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="sm:hidden"
-                aria-label="Open Menu"
-              >
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
-
-            <SheetContent side="right" className="w-70">
-              <div className="flex flex-col items-center gap-6 mt-10">
-                {navItems.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    className="text-lg font-medium hover:text-primary transition"
-                    onClick={() => {
-                      setOpen(false);
-                    }}
-                  >
-                    {item.label}
-                  </a>
-                ))}
-                <LanguageSwitcher />
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* 3d model */}
       <main className="fixed z-20 bottom-20 left-[50%] -translate-x-[50%]">
