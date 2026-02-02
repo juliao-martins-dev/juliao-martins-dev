@@ -48,6 +48,14 @@ import ScrollToTop from "@/components/ui/ScrollToTop";
 
 gsap.registerPlugin(ScrollTrigger);
 
+
+type TimelineItem = {
+  year: string;
+  title: string;
+  company: string;
+  description: string;
+};
+
 const unsplashImages = [
   "1500530855697-b586d89ba3ee",
   "1500534314209-a25ddb2bd429",
@@ -132,10 +140,13 @@ export default function PortfolioPage() {
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
 
+  const timelineRef = useRef<HTMLDivElement | null>(null);
   const galleryRef = useRef<HTMLDivElement | null>(null);
   const galleryTrackRef = useRef<HTMLDivElement | null>(null);
 
   const t = useTranslations();
+  const tAbout = useTranslations("about");
+  const timeline = tAbout.raw("timeline") as TimelineItem[];
   const scrolled = useScrollNavbar();
 
   const navItems = [
@@ -146,6 +157,26 @@ export default function PortfolioPage() {
     { label: t("nav.gallery"), href: "#gallery" },
     { label: t("nav.contact"), href: "#contact" },
   ];
+
+  useEffect(() => {
+    if (!timelineRef.current) return;
+
+    gsap.fromTo(
+      timelineRef.current.children,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.25,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: timelineRef.current,
+          start: "top 80%",
+        },
+      }
+    );
+  }, []);
 
   /* Horizontal scrolling gallery */
   useEffect(() => {
@@ -317,18 +348,58 @@ export default function PortfolioPage() {
         id="about"
         className="min-h-screen max-w-6xl mx-auto px-6 py-24"
       >
-         <h3 className="text-3xl font-bold mb-6">
+        <h3 className="text-3xl font-bold mb-6">
           {t("about.title")}
         </h3>
 
-        <p className="text-gray-600 mb-4">
+        <p className="text-gray-600 mb-10 max-w-3xl">
           {t("about.paragraph1")}
         </p>
 
-        <p className="text-gray-600">
-          {t("about.paragraph2")}
-        </p>
+        {/* Timeline */}
+        <div className="relative mt-16">
+          {/* Line */}
+          <div className="absolute top-8 left-0 right-0 h-1 bg-primary/20 rounded-full" />
+
+          {/* Items */}
+          <div
+            ref={timelineRef}
+            className="relative flex flex-col md:flex-row justify-between gap-12"
+          >
+            {timeline.map((item, index) => (
+              <div
+                key={index}
+                className="relative flex-1 flex flex-col items-center text-center"
+              >
+                {/* Dot */}
+                <div className="z-10 mb-4 h-6 w-6 rounded-full bg-primary border-4 border-background shadow-md" />
+
+                {/* Card */}
+                <Card className="w-full max-w-sm shadow-lg">
+                  <CardHeader>
+                    <Badge variant="secondary" className="w-fit mb-2">
+                      {item.year}
+                    </Badge>
+                    <CardTitle className="text-lg">
+                      {item.title}
+                    </CardTitle>
+                    <p className="text-sm text-muted-foreground">
+                      {item.company}
+                    </p>
+                  </CardHeader>
+
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
+
 
       {/* Projects */}
       <section

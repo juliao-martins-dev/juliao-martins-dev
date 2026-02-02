@@ -16,7 +16,21 @@
   "about": {
     "title": "Konaba Hau",
     "paragraph1": "Hau mak junior mobile developer ho esperiensia liu tinan rua iha área IT. Antes ne’e, hau servisu iha Leader Group hanesan IT, ne’ebé responsavel ba manutensaun hardware, networking, no sistema database ba cashier (Frontline) no back office (Backline). Hau mos suporta sistema retail boot ba empréza sira hanesan Leader Hypermarket Lda, Leader Mart Lda, CEMET Timor SA, Auto Timor Leste Lda, no Lisun Timor Lda.",
-    "paragraph2": "Agora dadaun, hau servisu hanesan IT Collaborator iha Viettel Timor Unipessoal, LDA (TELEMOR), empréza telecomunicação boot iha Timor-Leste. Hau integra iha IT Unit, liu-liu iha departamentu Software Development, ne’ebé hau servisu ona durante fulan haat. Hau agradese oportunidade ida ne’e no iha motivasaun boot atu kontinua dezenvolve hau nia abilidade hanesan mobile developer."
+    "paragraph2": "Agora dadaun, hau servisu hanesan IT Collaborator iha Viettel Timor Unipessoal, LDA (TELEMOR), empréza telecomunicação boot iha Timor-Leste. Hau integra iha IT Unit, liu-liu iha departamentu Software Development, ne’ebé hau servisu ona durante fulan haat. Hau agradese oportunidade ida ne’e no iha motivasaun boot atu kontinua dezenvolve hau nia abilidade hanesan mobile developer.",
+    "timeline": [
+      {
+        "year": "2022 – 2024",
+        "title": "IT",
+        "company": "Leader Group",
+        "description": "Servisu durante tinan rua iha área IT, apoiu sistema no ferramenta interna."
+      },
+      {
+        "year": "2024 – Agora",
+        "title": "Kolaborador IT",
+        "company": "Viettel Telemor",
+        "description": "Servisu iha Departamentu Software Development, kolabora iha aplikasaun mundo real."
+      }
+    ]
   },
 
   "projects": {
