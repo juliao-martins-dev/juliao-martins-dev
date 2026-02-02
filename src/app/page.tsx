@@ -56,17 +56,6 @@ type TimelineItem = {
   description: string;
 };
 
-const unsplashImages = [
-  "1500530855697-b586d89ba3ee",
-  "1500534314209-a25ddb2bd429",
-  "1521737604893-d14cc237f11d",
-  "1519681393784-d120267933ba",
-  "1492724441997-5dc865305da7",
-  "1520975916090-3105956dac38",
-  "1518770660439-4636190af475",
-  "1500534314209-a25ddb2bd429",
-];
-
 interface FormData {
   Username: string;
   Email: string;
