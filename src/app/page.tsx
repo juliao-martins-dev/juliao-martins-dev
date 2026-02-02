@@ -1,6 +1,5 @@
 "use client";
 
-import { useScrollNavbar } from "@/hooks/useScrollNavbar";
 import {
   Card,
   CardContent,
@@ -18,7 +17,6 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Scene from "@/components/Scene";
 import { useTranslations } from "next-intl";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import { skills } from "@/data/skills";
@@ -28,6 +26,7 @@ import { ContactFormData } from "@/types/contact";
 import { animateTimeline } from "@/animations/timeline";
 import { TimelineItem } from "@/types/timeline";
 import Navbar from "@/components/layout/Navbar";
+import ComputerVisual from "@/components/sections/ComputerVisual";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -114,13 +113,7 @@ export default function PortfolioPage() {
   return (
     <main className="font-sans scroll-smooth overflow-hidden">
       <Navbar />
-
-      {/* 3d model */}
-      <main className="fixed z-20 bottom-20 left-[50%] -translate-x-[50%]">
-        <section style={{ height: '100px' }}>
-          <Scene />
-        </section>
-      </main>
+      <ComputerVisual />
 
       {/* Home */}
       <section
