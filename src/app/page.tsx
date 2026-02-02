@@ -219,13 +219,6 @@ export default function PortfolioPage() {
     }
   };
 
-  /*
-  `fixed top-0 z-50 w-full transition-all duration-300
-        ${scrolled
-          ? "bg-white/70 dark:bg-slate-900/70 backdrop-blur-lg shadow-md"
-          : "bg-transparent"
-        }`
-  */
 
   return (
     <main className="font-sans scroll-smooth">
