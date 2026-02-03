@@ -45,9 +45,9 @@ export default function Navbar() {
         >
       <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <h1 className="text-xl font-bold tracking-tight">
+        <p className="text-xl font-bold tracking-tight">
           Julião Martins
-        </h1>
+        </p>
   
         {/* Desktop Menu */}
         <NavigationMenu className="hidden sm:flex">
