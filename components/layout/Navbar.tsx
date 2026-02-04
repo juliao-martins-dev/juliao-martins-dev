@@ -13,12 +13,12 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
 import { useScrollNavbar } from "@/hooks/useScrollNavbar";
-import clsx from "clsx";
 import { useState } from "react";
 import LanguageSwitcher from "../LanguageSwitcher";
 
 import { Menu } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils";
 
 
 export default function Navbar() {
@@ -36,7 +36,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={clsx(
+    <nav className={cn(
             "fixed top-0 z-50 w-full transition-all duration-300",
             scrolled
               ? "bg-white/70 dark:bg-slate-900/70 backdrop-blur-lg shadow-md"
