@@ -29,14 +29,20 @@ export const metadata: Metadata = {
 
   keywords: [
     "Julião Martins",
-    "Julião Timor Leste",
+    "Juliao Martins",
+    "Julião Martins Timor Leste",
+    "Juliao Martins Timor Leste",
+    "Julião Martins Dili",
     "mobile developer Timor Leste",
-    "React Native developer",
-    "Next.js developer",
-    "frontend developer",
+    "mobile developer Dili",
+    "React Native developer Timor Leste",
+    "React Native developer Dili",
+    "Next.js developer Timor Leste",
+    "frontend developer Timor Leste",
+    "desenvolvedor mobile Timor-Leste",
+    "desenvolvedor React Native Timor-Leste",
+    "IT Timor Leste",
     "React Native Expo",
-    "TypeScript",
-    "Next.js App Router",
   ],
 
   openGraph: {
@@ -74,9 +80,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children
-}:{
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
     <html lang="en">
       <body>
