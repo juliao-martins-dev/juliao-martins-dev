@@ -10,12 +10,12 @@
 
   "home": {
     "title": "Hi, I'm Julião",
-    "subtitle": "Junior Mobile Developer | Next.js | TailwindCSS"
+    "subtitle": "Frontend Developer | Next.js | React Native"
   },
 
   "about": {
     "title": "About Me",
-    "paragraph1": "I am a junior mobile developer with over two years of professional experience in IT support and systems maintenance. I previously worked at Leader Group, where I handled hardware, networking, and database systems for both cashier (Frontline) and back-office (Backline) operations. I also supported large-scale retail systems across multiple companies, including Leader Hypermarket Lda, Leader Mart Lda, CEMET Timor SA, Auto Timor Leste Lda, and Lisun Timor Lda.",
+    "paragraph1": "I am a Frontend developer with over two years of professional experience in IT support and systems maintenance. I previously worked at Leader Group, where I handled hardware, networking, and database systems for both cashier (Frontline) and back-office (Backline) operations. I also supported large-scale retail systems across multiple companies, including Leader Hypermarket Lda, Leader Mart Lda, CEMET Timor SA, Auto Timor Leste Lda, and Lisun Timor Lda.",
     "paragraph2": "Currently, I am working as an IT Collaborator at Viettel Timor Unipessoal, LDA (TELEMOR), one of the leading telecommunications companies in Timor-Leste. I am part of the IT Unit, specifically in the Software Development department, where I have been working for the past four months. I am grateful for this opportunity and motivated to continue growing as a mobile developer.",
     "timeline": [
       {
