@@ -5,7 +5,7 @@
 <p align="center">
   <strong>Building clean UI, smooth motion, and scalable frontend architecture.</strong>
   <br />
-  <em>Ha'u halo interface modernu, lalais, no centradu ba utilizadÃ³r.</em>
+  <em>Ha'u halo interface modernu, lalais, no centradu ba utilizador.</em>
 </p>
 
 <p align="center">
@@ -40,7 +40,7 @@
 - Frontend Developer in the Software Development Team at **[Viettel Telemor](https://telemor.tl/)**.
 - I focus on responsive interfaces, clean component systems, animation, and performance.
 - I use AI as a productivity multiplier for design quality, iteration speed, and architecture decisions.
-- Ha'u servisu hanesan IT Collaborator ho foco ba frontend moderno, efisiente no fasil atu uza.
+- Ha'u servisu hanesan IT Collaborator no fokus ba frontend moderno, efisiente no fasil atu uza.
 
 ---
 
@@ -50,7 +50,7 @@
   <img src="https://skillicons.dev/icons?i=nextjs,react,three,tailwind,ts,js,html,css,git,github,figma,vercel" alt="Tech stack icons" />
 </p>
 
-**Primary:** Next.js, React, TypeScript, Tailwind CSS  
+**Primary:** Next.js, React, React-Native, TypeScript, Tailwind CSS  
 **3D & Motion:** Three.js, React Three Fiber, GSAP  
 **Workflow:** GitHub, Figma, AI-assisted development
 
