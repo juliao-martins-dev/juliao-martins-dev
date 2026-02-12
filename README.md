@@ -1,97 +1,101 @@
-# 👋 Hi, I'm Julião
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=220&text=Juli%C3%A3o%20Martins&fontSize=44&fontAlignY=38&desc=Frontend%20Developer%20%7C%20IT%20Collaborator%20at%20Viettel%20Telemor&descAlignY=58&color=0:0f172a,100:0ea5e9&fontColor=ffffff" alt="JuliÃ£o Martins banner" />
+</p>
 
-Frontend Developer | IT Collaborator at **[Viettel Telemor](https://telemor.tl/)**  
-Part of the **Software Development Team**
+<p align="center">
+  <strong>Building clean UI, smooth motion, and scalable frontend architecture.</strong>
+  <br />
+  <em>Ha'u halo interface modernu, lalais, no centradu ba utilizadÃ³r.</em>
+</p>
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-Visit%20Website-blue?style=for-the-badge&logo=vercel)](https://juliao-martins-dev.vercel.app/)
-[![Frontend Developer](https://img.shields.io/badge/Role-Frontend%20Developer-blue)](#)
-[![IT Collaborator](https://img.shields.io/badge/IT-Collaborator-success)](#)
-[![Company](https://img.shields.io/badge/Company-Viettel%20Telemor-red)](#)
-[![Tech & AI](https://img.shields.io/badge/Focus-Tech%20%26%20AI-purple)](#)
-
----
-
-## 🌐 Portfolio Website
-
-👉 **Live Portfolio:**  
-🔗 https://juliao-martins-dev.vercel.app/
-
-[![Portfolio Preview](https://api.microlink.io/?url=https://juliao-martins-dev.vercel.app/&screenshot=true&meta=false&embed=screenshot.url)](https://juliao-martins-dev.vercel.app/)
-
----
-
-## 🚀 About Me | Kona-ba Ha'u
-
-I am a **Frontend Developer** collaborating with [**Viettel Telemor**](https://telemor.tl/), focusing on building modern, scalable, and user-centric digital products.
-
-Ha'u mak **IT Collaborator** iha Viettel Telemor, servisu hanesan **Frontend Developer**, ho posição ba teknolojia foun no AI.
-
-I enjoy transforming ideas into clean UI, smooth animations, and efficient frontend architecture.
+<p align="center">
+  <a href="https://juliao-martins-dev.vercel.app/">
+    <img src="https://img.shields.io/badge/Portfolio-Live%20Site-0ea5e9?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio badge" />
+  </a>
+  <a href="https://telemor.tl/">
+    <img src="https://img.shields.io/badge/Viettel%20Telemor-IT%20Collaborator-ef4444?style=for-the-badge&logo=databricks&logoColor=white" alt="Viettel Telemor badge" />
+  </a>
+  <img src="https://img.shields.io/badge/Focus-Frontend%20%2B%20AI-1d4ed8?style=for-the-badge" alt="Focus badge" />
+  <img src="https://komarev.com/ghpvc/?username=juliao-martins-dev&style=for-the-badge&color=0ea5e9" alt="Profile views" />
+</p>
 
 ---
 
-## 🛠 Tech Stack | Skill Tekniku
+## Portfolio
 
-### Core Technologies
-![My Skills](https://skillicons.dev/icons?i=react,nextjs,reactnative,tailwind,js,ts,html,css,git,github,figma)
+<p align="center">
+  <a href="https://juliao-martins-dev.vercel.app/">
+    <img src="https://api.microlink.io/?url=https://juliao-martins-dev.vercel.app/&screenshot=true&meta=false&embed=screenshot.url" alt="Portfolio preview" width="900" />
+  </a>
+</p>
 
-### Styling & Animation
-- **Tailwind CSS**
-- **GSAP (GreenSock Animation Platform)**
-
-### AI-Assisted Development
-- AI Prompting for UI & logic enhancement
-- Daily workflow with **AI Copilot**
-- Faster iteration, cleaner architecture
+<p align="center">
+  <a href="https://juliao-martins-dev.vercel.app/"><strong>Visit Website</strong></a>
+</p>
 
 ---
 
-## 📊 GitHub Statistics
+## About Me | Kona-ba Ha'u
 
-![Julião's GitHub Stats](https://github-readme-stats.vercel.app/api?username=juliao-martins-dev&show_icons=true&theme=default)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=juliao-martins-dev&layout=compact)
-
-![GitHub Streak](https://streak-stats.demolab.com?user=juliao-martins-dev)
-
----
-
-## 🤖 Tech & AI Enthusiasm | Entusiasmu ba Teknologia no AI
-
-I strongly believe AI **enhances developers**, not replaces them.
-
-Ha'u uza AI atu:
-- Improve frontend performance
-- Optimize design systems
-- Build smarter development workflows
+- Frontend Developer in the Software Development Team at **[Viettel Telemor](https://telemor.tl/)**.
+- I focus on responsive interfaces, clean component systems, animation, and performance.
+- I use AI as a productivity multiplier for design quality, iteration speed, and architecture decisions.
+- Ha'u servisu hanesan IT Collaborator ho foco ba frontend moderno, efisiente no fasil atu uza.
 
 ---
 
-## 💡 What I Do in the Team | Papel iha Team
+## Tech Stack | Skill Tekniku
 
-- Develop responsive & performant frontend applications
-- Collaborate with backend, QA, and product teams
-- Translate UI/UX designs into production-ready code
-- Continuously refactor with modern tools & AI support
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=nextjs,react,three,tailwind,ts,js,html,css,git,github,figma,vercel" alt="Tech stack icons" />
+</p>
 
----
-
-## 🌱 Always Learning | Aprende Kontinua
-
-Technology never stops — and neither do I.
-
-- Frontend architecture
-- Performance optimization
-- AI-driven development
-- UX & accessibility best practices
+**Primary:** Next.js, React, TypeScript, Tailwind CSS  
+**3D & Motion:** Three.js, React Three Fiber, GSAP  
+**Workflow:** GitHub, Figma, AI-assisted development
 
 ---
 
-## 📫 Let's Connect | Kontaktu
+## What I Do in the Team | Papel iha Team
 
-🌐 Portfolio: https://juliao-martins-dev.vercel.app/  
-💬 Open for collaboration & tech discussions
+- Build production-ready frontend features from UI/UX specs.
+- Collaborate with backend, QA, and product for reliable releases.
+- Improve performance, accessibility, and maintainability.
+- Turn complex ideas into simple and intuitive user experiences.
 
 ---
 
-> *"Build fast. Build clean. Build smart — with tech and AI."*
+## GitHub Stats
+
+<p align="center">
+  <img height="170" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=juliao-martins-dev&theme=github_dark" alt="GitHub stats" />
+  <img height="170" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=juliao-martins-dev&theme=github_dark" alt="Top languages" />
+</p>
+
+<p align="center">
+  <img src="https://streak-stats.demolab.com?user=juliao-martins-dev&theme=transparent&hide_border=true" alt="GitHub streak" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=juliao-martins-dev&bg_color=ffffff00&color=0f172a&line=0ea5e9&point=38bdf8&area=true&hide_border=true" alt="Contribution graph" />
+</p>
+
+---
+
+## Learning Direction | Aprende Kontinua
+
+- Advanced frontend architecture patterns
+- Performance profiling and optimization
+- AI-driven development workflows
+- UX accessibility best practices
+
+---
+
+## Connect
+
+- Portfolio: **https://juliao-martins-dev.vercel.app/**
+- Open to collaboration on frontend, product UI, and AI-assisted projects.
+
+---
+
+> Build fast. Build clean. Build smart.
