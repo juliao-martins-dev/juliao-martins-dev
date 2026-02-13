@@ -66,7 +66,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Julião Martins – Mobile Developer",
+    title: "Julião Martins – Frontend Developer",
     description: "Portfolio and projects built with React Native & Next.js",
     images: ["/juliao_martins.jpg"],
   },
