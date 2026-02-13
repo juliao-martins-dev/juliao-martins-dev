@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://juliao-martins-dev.vercel.app/">
+  <a href="https://juliao-martins.vercel.app/">
     <img src="https://img.shields.io/badge/Portfolio-Live%20Site-0ea5e9?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio badge" />
   </a>
   <a href="https://telemor.tl/">
@@ -24,13 +24,13 @@
 ## Portfolio
 
 <p align="center">
-  <a href="https://juliao-martins-dev.vercel.app/">
-    <img src="https://api.microlink.io/?url=https://juliao-martins-dev.vercel.app/&screenshot=true&meta=false&embed=screenshot.url" alt="Portfolio preview" width="900" />
+  <a href="https://juliao-martins.vercel.app/">
+    <img src="https://api.microlink.io/?url=https://juliao-martins.vercel.app/&screenshot=true&meta=false&embed=screenshot.url" alt="Portfolio preview" width="900" />
   </a>
 </p>
 
 <p align="center">
-  <a href="https://juliao-martins-dev.vercel.app/"><strong>Visit Website</strong></a>
+  <a href="https://juliao-martins.vercel.app/"><strong>Visit Website</strong></a>
 </p>
 
 ---
@@ -93,7 +93,7 @@
 
 ## Connect
 
-- Portfolio: **https://juliao-martins-dev.vercel.app/**
+- Portfolio: **https://juliao-martins.vercel.app/**
 - Open to collaboration on frontend, product UI, and AI-assisted projects.
 
 ---
