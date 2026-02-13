@@ -7,20 +7,20 @@ import "./globals.css";
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://juliao-martins-dev.vercel.app"),
+  metadataBase: new URL("https://juliao-martins.vercel.app"),
 
   title: {
-    default: "Julião Martins – Mobile Developer",
+    default: "Julião Martins – Frontend Developer",
     template: "%s | Julião Martins",
   },
 
   description:
-    "Portfolio of Julião Martins, Junior Mobile Developer focused on React Native, Next.js and modern web technologies.",
+    "Portfolio of Julião Martins, Frontend Developer focused on React Native, Next.js and modern web technologies.",
 
   authors: [
     {
       name: "Julião Martins",
-      url: "https://juliao-martins-dev.vercel.app",
+      url: "https://juliao-martins.vercel.app",
     },
   ],
   
@@ -46,9 +46,9 @@ export const metadata: Metadata = {
   ],
 
   openGraph: {
-    title: "Julião Martins – Mobile Developer",
+    title: "Julião Martins – Frontend Developer",
     description:
-      "Portfolio of Julião Martins, Junior Mobile Developer focused on React Native and Next.js.",
+      "Portfolio of Julião Martins, Frontend Developer focused on React Native and Next.js.",
     url: "/",
     siteName: "Julião Martins",
     locale: "en_US",
