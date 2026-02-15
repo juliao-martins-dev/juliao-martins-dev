@@ -6,6 +6,24 @@ import React from "react";
 import "./globals.css";
 
 
+const THEME_SCRIPT = `
+(() => {
+  try {
+    const storedTheme = localStorage.getItem("theme");
+    const hasStoredTheme = storedTheme === "light" || storedTheme === "dark";
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+    const theme = hasStoredTheme ? storedTheme : systemTheme;
+
+    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    document.documentElement.style.colorScheme = theme;
+  } catch (_) {}
+})();
+`;
+
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://juliao-martins.vercel.app"),
 
@@ -92,7 +110,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
       <body>
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
