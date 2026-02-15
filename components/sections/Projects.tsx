@@ -14,8 +14,7 @@ export default function Projects() {
     <section
         id="projects"
         className="min-h-screen px-6 py-24
-        bg-linear-to-b from-gray-50 to-white
-        dark:from-slate-900 dark:to-slate-950"
+        bg-linear-to-b from-background via-background to-muted/20"
       >
         <div className="max-w-6xl mx-auto">
           <h3 className="text-3xl font-bold mb-12 tracking-tight">

@@ -32,7 +32,7 @@ export default function About() {
       {t("about.title")}
     </h3>
 
-    <p className="text-gray-600 mb-10 max-w-3xl">
+    <p className="text-muted-foreground mb-10 max-w-3xl">
       {t("about.paragraph1")}
     </p>
 

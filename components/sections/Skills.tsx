@@ -14,8 +14,7 @@ export default function SKills() {
     <section
       id="skills"
       className="min-h-screen px-6 py-24
-        bg-linear-to-b from-white to-gray-50
-        dark:from-slate-950 dark:to-slate-900"
+        bg-linear-to-b from-muted/10 via-background to-muted/20"
     >
       <div className="max-w-6xl mx-auto">
         <h3 className="text-3xl font-bold mb-12 tracking-tight">

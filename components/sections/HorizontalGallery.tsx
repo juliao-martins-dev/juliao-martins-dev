@@ -20,7 +20,7 @@ export default function HorizontalGallery() {
     <section
       id="gallery"
       ref={galleryRef}
-      className="relative h-screen overflow-hidden bg-white"
+      className="relative h-screen overflow-hidden bg-linear-to-b from-background to-muted/20"
     >
       <div
         ref={trackRef}

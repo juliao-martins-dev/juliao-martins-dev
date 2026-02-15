@@ -60,8 +60,7 @@ export default function ContactForm() {
         id="contact"
         className="
           min-h-screen px-6 py-24
-          bg-linear-to-b from-gray-50 to-white
-          dark:from-slate-900 dark:to-slate-950
+          bg-linear-to-b from-background via-background to-muted/20
         "
       >
         <div className="max-w-xl mx-auto">
