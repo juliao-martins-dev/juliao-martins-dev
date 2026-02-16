@@ -53,7 +53,7 @@ function ThemeToggleButton({
       onClick={onToggle}
       aria-label="Toggle dark mode"
       className={cn(
-        "relative h-10 w-[4.5rem] rounded-full border border-border/60 bg-background/80 p-1 shadow-sm backdrop-blur-md transition-all duration-300",
+        "cursor-pointer relative h-10 w-[4.5rem] rounded-full border border-border/60 bg-background/80 p-1 shadow-sm backdrop-blur-md transition-all duration-300",
         "hover:bg-background hover:shadow-md",
         className
       )}

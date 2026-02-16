@@ -124,7 +124,7 @@ export default function ContactForm() {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full"
+                  className="cursor-pointer w-full"
                 >
                   {loading
                     ? t("contact.form.sending")

@@ -43,7 +43,7 @@ export default function LanguageSwitcher({ className }: LanguageSwitcherProps) {
           key={l.code}
           onClick={() => changeLanguage(l.code)}
           className={cn(
-            "rounded-full px-3 py-1 text-xs font-semibold tracking-wide transition-all duration-200",
+            "cursor-pointer rounded-full px-3 py-1 text-xs font-semibold tracking-wide transition-all duration-200",
             activeLanguage === l.code
               ? "bg-background text-foreground shadow-sm"
               : "text-muted-foreground hover:text-foreground"
