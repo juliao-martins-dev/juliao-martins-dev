@@ -2,6 +2,8 @@
 
 import { cn } from "@/lib/utils";
 import { useLocale } from "next-intl";
+import { useRouter } from "next/navigation";
+import { useTransition } from "react";
 
 const LANGUAGES = [
   { code: "en", label: "EN" },
@@ -20,15 +22,18 @@ type LanguageSwitcherProps = {
 };
 
 export default function LanguageSwitcher({ className }: LanguageSwitcherProps) {
+  const router = useRouter();
   const locale = useLocale();
+  const [isPending, startTransition] = useTransition();
   const activeLanguage = normalizeLocale(locale);
 
   const changeLanguage = (code: string) => {
-    if (code === activeLanguage) return;
+    if (code === activeLanguage || isPending) return;
 
-    localStorage.setItem("locale", code);
     setLocaleCookie(code);
-    window.location.reload();
+    startTransition(() => {
+      router.refresh();
+    });
   };
 
   return (
@@ -42,11 +47,13 @@ export default function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         <button
           key={l.code}
           onClick={() => changeLanguage(l.code)}
+          disabled={isPending}
           className={cn(
             "cursor-pointer rounded-full px-3 py-1 text-xs font-semibold tracking-wide transition-all duration-200",
             activeLanguage === l.code
               ? "bg-background text-foreground shadow-sm"
-              : "text-muted-foreground hover:text-foreground"
+              : "text-muted-foreground hover:text-foreground",
+            isPending && "cursor-not-allowed opacity-70"
           )}
         >
           {l.label}
