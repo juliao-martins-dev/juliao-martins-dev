@@ -46,9 +46,9 @@ I am a frontend developer focused on scalable, high-performance web interfaces a
 
 ---
 
-## 🇹🇱 Location & Contact
+## 🌍 Location & Contact
 
-- **Country:** Timor-Leste 🇹🇱
+- **Country:** <img src="https://flagcdn.com/w20/tl.png" width="20" alt="Timor-Leste flag" /> Timor-Leste (TL)
 - **Phone Code:** **+670**
 - **Collaboration:** Open to international remote projects and frontend partnerships.
 
