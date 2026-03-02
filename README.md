@@ -57,12 +57,26 @@ I am a frontend developer focused on scalable, high-performance web interfaces a
 ## 🧰 Tech Stack | Skill Tekniku
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=nextjs,react,three,tailwind,ts,js,html,css,git,github,figma,vercel" alt="Tech stack icons" />
+  <img src="https://img.shields.io/badge/HTML-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML badge" />
+  <img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS badge" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript badge" />
+  <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS badge" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript badge" />
+  <img src="https://img.shields.io/badge/ReactJS-61DAFB?style=flat-square&logo=react&logoColor=20232a" alt="ReactJS badge" />
+  <img src="https://img.shields.io/badge/React%20Native-61DAFB?style=flat-square&logo=react&logoColor=20232a" alt="React Native badge" />
+  <img src="https://img.shields.io/badge/NextJS-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="NextJS badge" />
+  <img src="https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logo=greensock&logoColor=white" alt="GSAP badge" />
+  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black" alt="Firebase badge" />
+  <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white" alt="Supabase badge" />
+  <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white" alt="Django badge" />
+  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git badge" />
+  <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel badge" />
 </p>
 
-- **Primary:** Next.js, React, React Native, TypeScript, Tailwind CSS
-- **3D & Motion:** Three.js, React Three Fiber, GSAP
-- **Workflow:** GitHub, Figma, AI-assisted development
+- **Frontend:** HTML, CSS, JavaScript, TypeScript, ReactJS, React Native, NextJS, TailwindCSS
+- **Motion:** GSAP
+- **Backend & BaaS:** Firebase, Supabase, Django
+- **Workflow & Deploy:** Git, Vercel
 
 ---
 
