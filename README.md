@@ -67,6 +67,7 @@ I am a frontend developer focused on scalable, high-performance web interfaces a
   <img src="https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logo=greensock&logoColor=white" alt="GSAP badge" />
   <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black" alt="Firebase badge" />
   <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white" alt="Supabase badge" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python Logo Badge">
   <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white" alt="Django badge" />
   <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git badge" />
   <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel badge" />
@@ -74,7 +75,7 @@ I am a frontend developer focused on scalable, high-performance web interfaces a
 
 - **Frontend:** HTML, CSS, JavaScript, TypeScript, ReactJS, React Native, NextJS, TailwindCSS
 - **Motion:** GSAP
-- **Backend & BaaS:** Firebase, Supabase, Django
+- **Backend & BaaS:** Firebase, Supabase, Python, Django
 - **Workflow & Deploy:** Git, Vercel
 
 ---
