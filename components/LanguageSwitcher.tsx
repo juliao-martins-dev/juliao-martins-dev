@@ -1,18 +1,14 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useLocale } from "next-intl";
-import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useRef, useState, useTransition } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+
+import { useIntlSwitcher } from "./IntlProvider";
 
 const LANGUAGES = [
   { code: "en", label: "EN" },
   { code: "te", label: "TE" }
 ];
-
-const setLocaleCookie = (locale: string) => {
-  document.cookie = `locale=${locale}; path=/`;
-};
 
 const normalizeLocale = (locale: string) =>
   locale.toLowerCase().split(/[-_]/)[0];
@@ -22,9 +18,7 @@ type LanguageSwitcherProps = {
 };
 
 export default function LanguageSwitcher({ className }: LanguageSwitcherProps) {
-  const router = useRouter();
-  const locale = useLocale();
-  const [isPending, startTransition] = useTransition();
+  const { locale, setLocale } = useIntlSwitcher();
   const activeLanguage = normalizeLocale(locale);
   const buttonRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const [indicator, setIndicator] = useState({
@@ -57,12 +51,8 @@ export default function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   }, [updateIndicator]);
 
   const changeLanguage = (code: string) => {
-    if (code === activeLanguage || isPending) return;
-
-    setLocaleCookie(code);
-    startTransition(() => {
-      router.refresh();
-    });
+    if (code === activeLanguage) return;
+    setLocale(code);
   };
 
   return (
@@ -109,13 +99,11 @@ export default function LanguageSwitcher({ className }: LanguageSwitcherProps) {
             buttonRefs.current[index] = node;
           }}
           onClick={() => changeLanguage(l.code)}
-          disabled={isPending}
           className={cn(
             "relative z-10 cursor-pointer rounded-full px-3 py-1 text-xs font-semibold tracking-wide transition-[color,transform] duration-300",
             activeLanguage === l.code
               ? "text-foreground dark:text-white dark:drop-shadow-[0_2px_5px_rgba(127,29,29,0.5)]"
-              : "text-muted-foreground hover:text-foreground dark:text-red-100/82 dark:hover:text-white hover:scale-[1.03]",
-            isPending && "cursor-not-allowed opacity-70"
+              : "text-muted-foreground hover:text-foreground dark:text-red-100/82 dark:hover:text-white hover:scale-[1.03]"
           )}
         >
           {l.label}

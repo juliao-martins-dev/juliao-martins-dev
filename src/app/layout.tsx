@@ -1,9 +1,23 @@
 import { Metadata } from "next";
-import { NextIntlClientProvider } from "next-intl";
+import { cookies } from "next/headers";
 
 import React from "react";
 
+import IntlProvider from "../../components/IntlProvider";
+import enMessages from "../../messages/en.json";
+import teMessages from "../../messages/te.json";
+
 import "./globals.css";
+
+const messagesMap = {
+  en: enMessages,
+  te: teMessages,
+} as const;
+
+type SupportedLocale = keyof typeof messagesMap;
+
+const isSupportedLocale = (value: string | undefined): value is SupportedLocale =>
+  value === "en" || value === "te";
 
 
 const THEME_SCRIPT = `
@@ -104,18 +118,26 @@ export const metadata: Metadata = {
 };
 
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const cookieStore = await cookies();
+  const cookieLocale = cookieStore.get("locale")?.value;
+  const initialLocale: SupportedLocale = isSupportedLocale(cookieLocale)
+    ? cookieLocale
+    : "en";
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={initialLocale} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <IntlProvider initialLocale={initialLocale} messagesMap={messagesMap}>
+          {children}
+        </IntlProvider>
       </body>
     </html>
   );
