@@ -7,9 +7,6 @@ export async function sendContactForm(data: ContactFormData) {
         "/",
         {
           data: data
-        },
-        {
-          headers: { "Content-Type": "application/json" },
         }
       )
   }
