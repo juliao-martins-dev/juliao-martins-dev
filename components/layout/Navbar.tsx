@@ -15,7 +15,20 @@ import { useScrollNavbar } from "@/hooks/useScrollNavbar";
 import { cn } from "@/lib/utils";
 import { Menu, MoonStar, Sun } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
+
+// React 18+ idiom for detecting hydration without setState-in-effect.
+// Server snapshot is `false`, client snapshot is `true`, so the value
+// flips exactly once after hydration completes.
+const subscribeNoop = () => () => {};
+const getHydratedClientSnapshot = () => true;
+const getHydratedServerSnapshot = () => false;
+const useHasHydrated = () =>
+  useSyncExternalStore(
+    subscribeNoop,
+    getHydratedClientSnapshot,
+    getHydratedServerSnapshot
+  );
 
 import LanguageSwitcher from "../LanguageSwitcher";
 import { Button } from "../ui/button";
@@ -70,6 +83,12 @@ function ThemeToggleButton({
 export default function Navbar() {
   const scrolled = useScrollNavbar();
   const [open, setOpen] = useState<boolean>(false);
+  // Defer Radix Sheet mount until after hydration. Radix Dialog's
+  // auto-generated aria-controls (via React useId) can drift between SSR
+  // and CSR with React 19 + next-intl, producing a hydration mismatch.
+  // Rendering a visually identical placeholder on the server and only
+  // mounting the real Sheet on the client side-steps the issue cleanly.
+  const mounted = useHasHydrated();
   const t = useTranslations();
 
   const navItems = [
@@ -127,40 +146,56 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2 sm:hidden">
           <ThemeToggleButton onToggle={toggleTheme} />
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="border border-border/60 bg-background/70 backdrop-blur-sm"
-                aria-label="Open Menu"
-              >
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
+          {mounted ? (
+            <Sheet open={open} onOpenChange={setOpen}>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="border border-border/60 bg-background/70 backdrop-blur-sm"
+                  aria-label="Open Menu"
+                >
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
 
-            <SheetContent
-              side="right"
-              className="w-72 border-l border-border/50 bg-background/95 backdrop-blur-xl"
-            >
-              <div className="mt-10 flex flex-col items-center gap-6">
-                {navItems.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    className="text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
-                    onClick={() => setOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                ))}
-                <div className="mt-2 flex items-center gap-3">
-                  <ThemeToggleButton onToggle={toggleTheme} />
-                  <LanguageSwitcher />
+              <SheetContent
+                side="right"
+                className="w-72 border-l border-border/50 bg-background/95 backdrop-blur-xl"
+              >
+                <div className="mt-10 flex flex-col items-center gap-6">
+                  {navItems.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      className="text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
+                      onClick={() => setOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                  <div className="mt-2 flex items-center gap-3">
+                    <ThemeToggleButton onToggle={toggleTheme} />
+                    <LanguageSwitcher />
+                  </div>
                 </div>
-              </div>
-            </SheetContent>
-          </Sheet>
+              </SheetContent>
+            </Sheet>
+          ) : (
+            // Server / pre-hydration placeholder. Same dimensions and visuals
+            // as the real trigger so there's no layout shift when the Sheet
+            // mounts. Disabled because the dialog isn't wired up yet.
+            <Button
+              variant="ghost"
+              size="icon"
+              className="border border-border/60 bg-background/70 backdrop-blur-sm"
+              aria-label="Open Menu"
+              aria-hidden
+              tabIndex={-1}
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
+          )}
         </div>
       </div>
     </nav>
