@@ -37,8 +37,8 @@ export function useHorizontalScroll({
     });
 
     return () => {
+      tween.scrollTrigger?.kill();
       tween.kill();
-      ScrollTrigger.getAll().forEach((st) => st.kill());
     };
   }, [containerRef, trackRef]);
 }
