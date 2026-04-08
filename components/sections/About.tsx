@@ -136,11 +136,14 @@ export default function About() {
 
                 {/* Card */}
                 <Card
-                  className="timeline-card w-full rounded-2xl border border-border/50
-                             bg-background/85 backdrop-blur-md shadow-md
+                  className="timeline-card relative z-20 w-full rounded-2xl
+                             border border-border bg-background
+                             shadow-[0_10px_30px_-12px_rgba(15,23,42,0.25)]
+                             dark:shadow-[0_14px_36px_-12px_rgba(0,0,0,0.6)]
                              border-t-4 transition-all duration-300
                              group-hover:-translate-y-2
-                             group-hover:shadow-[0_24px_45px_-20px_rgba(0,0,0,0.45)]"
+                             group-hover:shadow-[0_28px_50px_-18px_rgba(15,23,42,0.45)]
+                             dark:group-hover:shadow-[0_30px_55px_-18px_rgba(0,0,0,0.75)]"
                   style={{ borderTopColor: color }}
                 >
                   <CardHeader className="space-y-1 pb-2">
@@ -203,30 +206,52 @@ export default function About() {
           })}
         </div>
 
-        {/* The road */}
-        <div className="relative -mt-2">
-          <div
-            aria-hidden
-            className="h-[6px] w-full rounded-full
-                       bg-gradient-to-r from-transparent
-                       via-slate-300 dark:via-slate-600
-                       to-transparent
-                       shadow-[0_2px_18px_rgba(15,23,42,0.18)]"
-          />
-          <div
-            aria-hidden
-            className="mx-auto -mt-px h-px w-[92%] rounded-full
-                       bg-gradient-to-r from-transparent
-                       via-white/70 dark:via-white/15
-                       to-transparent"
-          />
-          {/* Soft ground shadow */}
-          <div
-            aria-hidden
-            className="mx-auto mt-1 h-6 w-[80%] rounded-[100%]
-                       bg-gradient-to-b from-slate-400/20 to-transparent
-                       blur-md"
-          />
+        {/* ==== THE ROAD — visible highway under the pins ==== */}
+        <div className="relative -mt-10 z-0" aria-hidden>
+          <div className="relative mx-auto max-w-5xl px-2">
+            {/* Cast shadow under the road */}
+            <div
+              className="absolute inset-x-[8%] top-9 h-14 rounded-[100%]
+                         bg-slate-900/25 blur-2xl
+                         dark:bg-black/60"
+            />
+
+            {/* Road body — capsule with gradient surface and inset shadows */}
+            <div
+              className="relative h-16 rounded-full overflow-hidden
+                         bg-linear-to-b from-slate-200 via-slate-300 to-slate-400
+                         dark:from-slate-700 dark:via-slate-800 dark:to-slate-950
+                         shadow-[inset_0_2px_3px_rgba(255,255,255,0.7),inset_0_-4px_8px_rgba(15,23,42,0.28),0_10px_28px_-8px_rgba(15,23,42,0.25)]
+                         dark:shadow-[inset_0_2px_3px_rgba(255,255,255,0.12),inset_0_-4px_8px_rgba(0,0,0,0.65),0_14px_32px_-8px_rgba(0,0,0,0.55)]"
+            >
+              {/* Top rim highlight — the lit edge of the asphalt */}
+              <div
+                className="absolute left-[5%] right-[5%] top-[6px] h-px
+                           bg-linear-to-r from-transparent via-white/85 to-transparent
+                           dark:via-white/35"
+              />
+
+              {/* Dashed center lane line */}
+              <div
+                className="absolute left-[8%] right-[8%] top-1/2 -translate-y-1/2 h-[3px] rounded-full opacity-80 dark:opacity-65"
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(to right, rgb(255 255 255) 0 30px, transparent 30px 54px)",
+                }}
+              />
+
+              {/* Bottom dark line for added depth */}
+              <div
+                className="absolute left-[5%] right-[5%] bottom-[5px] h-px
+                           bg-linear-to-r from-transparent via-black/35 to-transparent
+                           dark:via-black/70"
+              />
+            </div>
+
+            {/* Side fades — blend the road into the section background */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-40 bg-linear-to-r from-background via-background/80 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-linear-to-l from-background via-background/80 to-transparent" />
+          </div>
         </div>
       </div>
     </section>

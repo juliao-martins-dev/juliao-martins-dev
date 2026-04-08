@@ -21,10 +21,17 @@ export function animateTimeline(root: HTMLElement) {
     if (cards.length === 0) return;
 
     const tl = gsap.timeline({
-      defaults: { ease: "power3.out" },
+      defaults: {
+        ease: "power3.out",
+        // Don't pre-apply FROM state on mount. Otherwise React Strict Mode's
+        // double-mount + ScrollTrigger `once: true` can leave cards stuck at
+        // opacity:0 / y:50 if the trigger has already passed by the second
+        // mount.
+        immediateRender: false,
+      },
       scrollTrigger: {
         trigger: root,
-        start: "top 75%",
+        start: "top 85%",
         once: true,
       },
     });
@@ -34,6 +41,8 @@ export function animateTimeline(root: HTMLElement) {
       y: 50,
       duration: 0.7,
       stagger: 0.15,
+      // Clear inline styles so nothing GSAP wrote can linger as a stuck state.
+      clearProps: "opacity,transform",
     });
 
     if (lines.length) {
@@ -44,6 +53,7 @@ export function animateTimeline(root: HTMLElement) {
           transformOrigin: "top center",
           duration: 0.55,
           stagger: 0.15,
+          clearProps: "transform",
         },
         "-=0.55"
       );
@@ -58,6 +68,7 @@ export function animateTimeline(root: HTMLElement) {
           duration: 0.4,
           stagger: 0.15,
           ease: "back.out(1.8)",
+          clearProps: "opacity,transform",
         },
         "-=0.35"
       );
