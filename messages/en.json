@@ -54,7 +54,7 @@
       "email": "Email",
       "message": "Message",
       "send": "Send Message",
-      "sending": "Sending..."
+      "sending": "Sending"
     },
     "success": "✅ Message sent successfully!",
     "error": "❌ Failed to send message. Please try again."

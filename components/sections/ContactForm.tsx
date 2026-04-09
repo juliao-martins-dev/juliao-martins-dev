@@ -131,11 +131,13 @@ export default function ContactForm() {
                   className="cursor-pointer w-full gap-x-3 flex"
                 >
                   {loading
-                    ? <>
-                      <PacmanLoader size={10} color="#ffffff" />
-                      {' '}
-                      {t("contact.form.sending")}
-                    </>
+                    ? (
+                      <>
+                        {t("contact.form.sending")}
+                        {' '}
+                        <PacmanLoader size={10} color="#ffffff" />
+                      </>
+                    )
                     : t("contact.form.send")}
                 </Button>
 
