@@ -14,6 +14,7 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { ContactFormData } from "@/types/contact";
 import { sendContactForm } from "@/lib/api/contact";
+import { PacmanLoader } from "react-spinners";
 
 
 const initialFormData: ContactFormData = {
@@ -46,6 +47,9 @@ export default function ContactForm() {
       await sendContactForm(formData);
       setMessage(t("contact.success"));
       setFormData(initialFormData);
+      setTimeout(() => {
+        setMessage("");
+      }, 5000);
     } catch (error) {
       setMessage(t("contact.error"));
       console.error(error);
@@ -124,10 +128,14 @@ export default function ContactForm() {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="cursor-pointer w-full"
+                  className="cursor-pointer w-full gap-x-3 flex"
                 >
                   {loading
-                    ? t("contact.form.sending")
+                    ? <>
+                      <PacmanLoader size={10} color="#ffffff" />
+                      {' '}
+                      {t("contact.form.sending")}
+                    </>
                     : t("contact.form.send")}
                 </Button>
 
