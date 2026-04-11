@@ -39,7 +39,7 @@
 
 I am a frontend developer focused on scalable, high-performance web interfaces and polished user experiences.
 
-- Frontend Developer in the Software Development Team at **[Viettel Telemor](https://telemor.tl/)**.
+- Frontend Developer in the Software Development Team at **[Viettel Timor (TELEMOR)](https://telemor.tl/)**.
 - Strong focus on component architecture, responsiveness, animation, and accessibility.
 - AI-assisted workflow for faster iteration, better design quality, and cleaner engineering decisions.
 - Ha'u servisu hanesan IT Collaborator ho fokus ba frontend moderno, efisiente no fasil atu uza.
