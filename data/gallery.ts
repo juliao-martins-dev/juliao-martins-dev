@@ -10,4 +10,6 @@ export const galleryItems: GalleryItem[] = [
   { src: "/6.gif" },
   { src: "/7.jpg" },
   { src: "/8.jpg" },
+  { src: "/9.jpg" },
+  { src: "/10.jpg" },
 ];
