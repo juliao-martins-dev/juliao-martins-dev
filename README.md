@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=230&text=Juli%C3%A3o%20Martins&fontSize=46&fontAlignY=38&desc=Frontend%20Developer%20%7C%20IT%20Collaborator%20at%20Viettel%20Telemor&descAlignY=60&color=0:0f172a,100:0ea5e9&fontColor=ffffff" alt="Julião Martins banner" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=230&text=Juli%C3%A3o%20Martins&fontSize=46&fontAlignY=38&desc=Frontend%20Developer%20%7C%20IT%20Collaborator%20at%20Viettel%20Timor%20(Telemor)&descAlignY=60&color=0:0f172a,100:0ea5e9&fontColor=ffffff" alt="Julião Martins banner" />
 </p>
 
 <p align="center">
