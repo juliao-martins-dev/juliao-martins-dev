@@ -42,12 +42,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://juliao-martins.vercel.app"),
 
   title: {
-    default: "Julião Martins – Frontend Developer",
+    default: "Julião Martins – Junior Developer",
     template: "%s | Julião Martins",
   },
 
   description:
-    "Portfolio of Julião Martins, Frontend Developer focused on React Native, Next.js and modern web technologies.",
+    "Portfolio of Julião Martins, Junior Developer focused on React Native, Next.js and modern web technologies.",
 
   authors: [
     {
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     "React Native developer Timor Leste",
     "React Native developer Dili",
     "Next.js developer Timor Leste",
-    "frontend developer Timor Leste",
+    "Junior developer Timor Leste",
     "desenvolvedor mobile Timor-Leste",
     "desenvolvedor React Native Timor-Leste",
     "IT Timor Leste",
@@ -86,9 +86,9 @@ export const metadata: Metadata = {
   ],
 
   openGraph: {
-    title: "Julião Martins – Frontend Developer",
+    title: "Julião Martins – Junior Developer",
     description:
-      "Portfolio of Julião Martins, Frontend Developer focused on React Native and Next.js.",
+      "Portfolio of Julião Martins, Junior Developer focused on React Native and Next.js.",
     url: "/",
     siteName: "Julião Martins",
     locale: "en_US",
@@ -106,7 +106,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Julião Martins – Frontend Developer",
+    title: "Julião Martins – Junior Developer",
     description: "Portfolio and projects built with React Native & Next.js",
     images: ["/juliao_martins.jpg"],
   },
