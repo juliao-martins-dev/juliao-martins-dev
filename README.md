@@ -71,14 +71,18 @@ I am a Junior developer focused on scalable, high-performance web interfaces and
   <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white" alt="Django badge" />
   <img src="https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white" alt="Java badge" />
   <img src="https://img.shields.io/badge/Android%20Studio-3DDC84?style=flat-square&logo=androidstudio&logoColor=white" alt="Android Studio badge" />
+  <img src="https://img.shields.io/badge/GitLab%20CI%2FCD-FC6D26?style=flat-square&logo=gitlab&logoColor=white" alt="GitLab CI/CD badge" />
+  <img src="https://img.shields.io/badge/MkDocs-526CFE?style=flat-square&logo=materialformkdocs&logoColor=white" alt="MkDocs badge" />
+  <img src="https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white" alt="Nginx badge" />
   <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git badge" />
   <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel badge" />
 </p>
 
-- **Frontend:** HTML, CSS, JavaScript, TypeScript, ReactJS, React Native, NextJS, TailwindCSS
+- **Frontend:** HTML, CSS, JavaScript, TypeScript, TailwindCSS, ReactJS, React Native, NextJS
 - **Motion:** GSAP
-- **Backend & BaaS:** Firebase, Supabase, Python, Django
-- **Workflow & Deploy:** Git, Vercel
+- **Backend & BaaS:** Python, Django, Firebase, Supabase
+- **Mobile:** Java, Android Studio
+- **DevOps & Deploy:** Git, GitLab CI/CD, MkDocs, Nginx, Vercel
 
 ---
 
