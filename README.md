@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=230&text=Juli%C3%A3o%20Martins&fontSize=46&fontAlignY=38&desc=Frontend%20Developer%20%7C%20IT%20Collaborator%20at%20Viettel%20Timor%20Unipessoal%20Lda%20(Telemor)&descAlignY=60&color=0:0f172a,100:0ea5e9&fontColor=ffffff" alt="Julião Martins banner" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=230&text=Juli%C3%A3o%20Martins&fontSize=46&fontAlignY=38&desc=Junior%20Developer%20%7C%20IT%20Collaborator%20at%20Viettel%20Timor%20Unipessoal%20Lda%20(Telemor)&descAlignY=60&color=0:0f172a,100:0ea5e9&fontColor=ffffff" alt="Julião Martins banner" />
 </p>
 
 <p align="center">
@@ -37,12 +37,12 @@
 
 ## 👨‍💻 About Me | Kona-ba Ha'u
 
-I am a frontend developer focused on scalable, high-performance web interfaces and polished user experiences.
+I am a Junior developer focused on scalable, high-performance web interfaces and polished user experiences.
 
-- Frontend Developer in the Software Development Team at **[Viettel Timor Unipessoal Lda (Telemor)](https://telemor.tl/)**.
+- Junior Developer in the Software Development Team at **[Viettel Timor Unipessoal Lda (Telemor)](https://telemor.tl/)**.
 - Strong focus on component architecture, responsiveness, animation, and accessibility.
 - AI-assisted workflow for faster iteration, better design quality, and cleaner engineering decisions.
-- Ha'u servisu hanesan IT Collaborator ho fokus ba frontend moderno, efisiente no fasil atu uza.
+- Ha'u servisu hanesan IT Collaborator ho fokus ba develop app moderno, efisiente no fasil atu uza.
 
 ---
 
@@ -69,6 +69,8 @@ I am a frontend developer focused on scalable, high-performance web interfaces a
   <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white" alt="Supabase badge" />
   <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python Logo Badge">
   <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white" alt="Django badge" />
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white" alt="Java badge" />
+  <img src="https://img.shields.io/badge/Android%20Studio-3DDC84?style=flat-square&logo=androidstudio&logoColor=white" alt="Android Studio badge" />
   <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git badge" />
   <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel badge" />
 </p>
