@@ -37,7 +37,7 @@
 
 ## 👨‍💻 About Me | Kona-ba Ha'u
 
-I am a Junior developer focused on scalable, high-performance web interfaces and polished user experiences.
+I am a Junior Developer focused on building scalable web and mobile applications, combining modern frontend technologies, robust backend systems, and reliable database architectures.
 
 - Junior Developer in the Software Development Team at **[Viettel Timor Unipessoal Lda (Telemor)](https://telemor.tl/)**.
 - Strong focus on component architecture, responsiveness, animation, and accessibility.
@@ -69,6 +69,9 @@ I am a Junior developer focused on scalable, high-performance web interfaces and
   <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white" alt="Supabase badge" />
   <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python Logo Badge">
   <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white" alt="Django badge" />
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white" alt="MySQL badge" />
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL badge" />
+  <img src="https://img.shields.io/badge/OracleDB-F80000?style=flat-square&logo=oracle&logoColor=white" alt="Oracle Database badge" />
   <img src="https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white" alt="Java badge" />
   <img src="https://img.shields.io/badge/Android%20Studio-3DDC84?style=flat-square&logo=androidstudio&logoColor=white" alt="Android Studio badge" />
   <img src="https://img.shields.io/badge/GitLab%20CI%2FCD-FC6D26?style=flat-square&logo=gitlab&logoColor=white" alt="GitLab CI/CD badge" />
@@ -76,11 +79,13 @@ I am a Junior developer focused on scalable, high-performance web interfaces and
   <img src="https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white" alt="Nginx badge" />
   <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git badge" />
   <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel badge" />
+
 </p>
 
 - **Frontend:** HTML, CSS, JavaScript, TypeScript, TailwindCSS, ReactJS, React Native, NextJS
 - **Motion:** GSAP
 - **Backend & BaaS:** Python, Django, Firebase, Supabase
+- **Database:** MySQL, PostgreSQL, Oracle Database
 - **Mobile:** Java, Android Studio
 - **DevOps & Deploy:** Git, GitLab CI/CD, MkDocs, Nginx, Vercel
 
