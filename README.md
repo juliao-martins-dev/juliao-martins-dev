@@ -39,7 +39,7 @@
 
 I am a Junior Developer focused on building scalable web and mobile applications, combining modern frontend technologies, robust backend systems, and reliable database architectures.
 
-- Junior Developer in the Software Development Team at **[Viettel Timor Unipessoal Lda (Telemor)](https://telemor.tl/)**.
+- Junior Developer in the Software Development Team at **[Viettel Timor, Unipessoal, Lda (Telemor)](https://telemor.tl/)**.
 - Strong focus on component architecture, responsiveness, animation, and accessibility.
 - AI-assisted workflow for faster iteration, better design quality, and cleaner engineering decisions.
 - Ha'u servisu hanesan IT Collaborator ho fokus ba develop app moderno, efisiente no fasil atu uza.
