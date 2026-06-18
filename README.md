@@ -15,7 +15,7 @@
   <a href="https://telemor.tl/">
     <img src="https://img.shields.io/badge/Viettel%20Timor,%20Unipessoal,%20lda%20(Telemor)-IT%20Collaborator-ef4444?style=for-the-badge&logo=databricks&logoColor=white" alt="Viettel Telemor badge" />
   </a>
-  <img src="https://img.shields.io/badge/Focus-Frontend%20Engineering%20%2B%20AI-1d4ed8?style=for-the-badge" alt="Focus badge" />
+  <img src="https://img.shields.io/badge/Focus-Developer%20%2B%20AI-1d4ed8?style=for-the-badge" alt="Focus badge" />
   <img src="https://komarev.com/ghpvc/?username=juliao-martins-dev&style=for-the-badge&color=0ea5e9" alt="Profile views" />
 </p>
 
