@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=230&text=Juli%C3%A3o%20Martins&fontSize=46&fontAlignY=38&desc=Junior%20Developer%20%7C%20IT%20Collaborator%20at%20Viettel%20Timor%20Unipessoal%20Lda%20(Telemor)&descAlignY=60&color=0:0f172a,100:0ea5e9&fontColor=ffffff" alt="Julião Martins banner" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=230&text=Juli%C3%A3o%20Martins&fontSize=46&fontAlignY=38&desc=Junior%20Developer%20%7C%20IT%20Collaborator%20at%20Viettel%20Timor,%20Unipessoal,%20Lda%20(Telemor)&descAlignY=60&color=0:0f172a,100:0ea5e9&fontColor=ffffff" alt="Julião Martins banner" />
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/badge/Portfolio-Live%20Site-0ea5e9?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio badge" />
   </a>
   <a href="https://telemor.tl/">
-    <img src="https://img.shields.io/badge/Viettel%20Telemor-IT%20Collaborator-ef4444?style=for-the-badge&logo=databricks&logoColor=white" alt="Viettel Telemor badge" />
+    <img src="https://img.shields.io/badge/Viettel%20Timor,%20Unipessoal,%20lda%20(Telemor)-IT%20Collaborator-ef4444?style=for-the-badge&logo=databricks&logoColor=white" alt="Viettel Telemor badge" />
   </a>
   <img src="https://img.shields.io/badge/Focus-Frontend%20Engineering%20%2B%20AI-1d4ed8?style=for-the-badge" alt="Focus badge" />
   <img src="https://komarev.com/ghpvc/?username=juliao-martins-dev&style=for-the-badge&color=0ea5e9" alt="Profile views" />
