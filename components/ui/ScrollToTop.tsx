@@ -1,10 +1,12 @@
 "use client"
 
+import { useTranslations } from "next-intl"
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ChevronUp } from "lucide-react"
 
 export default function ScrollToTop() {
+  const t = useTranslations()
   const [visible, setVisible] = useState<boolean>(false)
   // Mirror of `visible`, so the handler can bail before touching React.
   const visibleRef = useRef(false)
@@ -32,7 +34,7 @@ export default function ScrollToTop() {
       onClick={scrollToTop}
       size="icon"
       variant="default"
-      aria-label="Scroll to top"
+      aria-label={t("a11y.backToTop")}
       className={`
         fixed bottom-14 right-7 z-50 size-11 rounded-full shadow-lg
         transition-all duration-300

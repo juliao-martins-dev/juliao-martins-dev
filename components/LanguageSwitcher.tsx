@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { Check, ChevronDown } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useIntlSwitcher } from "./IntlProvider";
@@ -111,6 +112,7 @@ type LanguageSwitcherProps = {
 
 export default function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const { locale, setLocale } = useIntlSwitcher();
+  const t = useTranslations();
   const activeCode = normalizeLocale(locale);
   const activeLang =
     LANGUAGES.find((l) => l.code === activeCode) ?? LANGUAGES[0];
@@ -158,7 +160,7 @@ export default function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         onClick={() => setOpen((prev) => !prev)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label="Change language"
+        aria-label={t("a11y.changeLanguage")}
         className={cn(
           "group flex cursor-pointer items-center gap-2 rounded-full",
           "border border-border/60 bg-background/70 px-3 py-1.5 text-sm font-medium text-foreground",
@@ -180,7 +182,7 @@ export default function LanguageSwitcher({ className }: LanguageSwitcherProps) {
       {/* ---- Dropdown ---- */}
       <div
         role="listbox"
-        aria-label="Languages"
+        aria-label={t("a11y.languages")}
         // Closed menus must not be tabbable. Without this the two options stay
         // in the tab order while invisible, so keyboard users hit two dead
         // stops after the trigger.

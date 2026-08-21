@@ -57,6 +57,12 @@
     "text": "Turning ideas into reliable digital products."
   },
   "a11y": {
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "changeTheme": "Change theme",
+    "openMenu": "Open menu",
+    "closeMenu": "Close",
+    "changeLanguage": "Change language",
+    "languages": "Languages",
+    "backToTop": "Back to top"
   }
 }

@@ -57,6 +57,12 @@
     "text": "Troka ideia sira sai ba produtu dijital ne'ebé fiável."
   },
   "a11y": {
-    "skipToContent": "Skip to content"
+    "skipToContent": "Ba konteúdu prinsipál",
+    "changeTheme": "Troka tema",
+    "openMenu": "Loke menu",
+    "closeMenu": "Taka",
+    "changeLanguage": "Troka lian",
+    "languages": "Lian sira",
+    "backToTop": "Fila ba leten"
   }
 }

@@ -53,12 +53,14 @@ function ThemeToggleButton({
   onToggle: () => void;
   className?: string;
 }) {
+  const t = useTranslations();
+
   return (
     <Button
       type="button"
       variant="ghost"
       onClick={onToggle}
-      aria-label="Toggle dark mode"
+      aria-label={t("a11y.changeTheme")}
       className={cn(
         "tap-target cursor-pointer relative h-10 w-[4.5rem] rounded-full border border-border/60 bg-background/80 p-1 shadow-sm backdrop-blur-md transition-all duration-300",
         "hover:bg-background hover:shadow-md",
@@ -156,7 +158,7 @@ export default function Navbar() {
                   variant="ghost"
                   size="icon"
                   className="tap-target border border-border/60 bg-background/70 backdrop-blur-sm"
-                  aria-label="Open Menu"
+                  aria-label={t("a11y.openMenu")}
                 >
                   <Menu className="h-5 w-5" />
                 </Button>
@@ -164,6 +166,7 @@ export default function Navbar() {
 
               <SheetContent
                 side="right"
+                closeLabel={t("a11y.closeMenu")}
                 className="w-72 border-l border-border/50 bg-background/95 backdrop-blur-xl"
               >
                 <div className="mt-10 flex flex-col items-center gap-6">
@@ -192,7 +195,7 @@ export default function Navbar() {
               variant="ghost"
               size="icon"
               className="border border-border/60 bg-background/70 backdrop-blur-sm"
-              aria-label="Open Menu"
+              aria-label={t("a11y.openMenu")}
               aria-hidden
               tabIndex={-1}
             >

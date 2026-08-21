@@ -46,14 +46,32 @@ const en: HeroCopy = {
 };
 
 /**
- * TODO — Tetum translation needed.
+ * Tetum.
  *
- * `connector`, `current` and `srSummary` are real prose and must be translated
- * by Julião. Role titles and technology names stay in English by convention.
- * Until a translation is supplied this falls back to `en`, so the Tetum site
- * shows English hero copy rather than a missing-key error.
+ * Deliberately unchanged from `en`:
+ *  - `name` / `photoAlt` — a proper noun.
+ *  - `stackA` / `stackB` — technology names, which are not translated.
+ *  - `roleA` / `roleB` — English role titles, matching how messages/te.json
+ *    already writes "Junior developer" inside Tetum sentences.
+ *
+ * Everything else is real prose and is translated below.
+ *
+ * REVIEW NEEDED: written by Claude, who is not a native Tetum speaker.
+ * Julião should check the wording before this ships.
  */
-const te: HeroCopy = { ...en };
+const te: HeroCopy = {
+  ...en,
+  connector: "Transisaun ba",
+  current: {
+    prefix: "Agora dadaun",
+    role: "IT Kolaborador",
+    suffix: "iha Viettel Timor (Telemor)",
+  },
+  srSummary:
+    "Junior Developer, iha transisaun ba AI Engineer. " +
+    "Teknolojia atuál: TypeScript, React, React Native, Next.js, Tailwind CSS. " +
+    "Aprende hela: Python, NLP, LLMs, LangChain, Hugging Face.",
+};
 
 export const heroCopy = { en, te } as const;
 
