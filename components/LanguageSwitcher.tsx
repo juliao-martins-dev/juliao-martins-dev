@@ -181,6 +181,10 @@ export default function LanguageSwitcher({ className }: LanguageSwitcherProps) {
       <div
         role="listbox"
         aria-label="Languages"
+        // Closed menus must not be tabbable. Without this the two options stay
+        // in the tab order while invisible, so keyboard users hit two dead
+        // stops after the trigger.
+        inert={!open}
         className={cn(
           "absolute right-0 top-[calc(100%+10px)] z-50 min-w-[180px] origin-top-right",
           "overflow-hidden rounded-xl border border-border/60 bg-background/95 p-1.5",

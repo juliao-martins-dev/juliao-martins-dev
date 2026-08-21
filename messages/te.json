@@ -7,12 +7,10 @@
     "gallery": "Galeria",
     "contact": "Kontaktu"
   },
-
   "home": {
     "title": "Olá, ha'u Julião",
     "subtitle": "Junior Developer | Next.js | React Native"
   },
-
   "about": {
     "title": "Konaba Hau",
     "paragraph1": "Hau mak IT Profisional no Junior Developer ho esperiensia profisional ho tinan rua iha suporta IT no manutensaun sistema. Hau servisu dahuluk iha Leader Group, iha ne'ebá hau jere hardware, networking, no jestaun baze-dadus ba sistema retail, inklui operasaun kaxeira (Frontline) no back-office (Backline). Hau mós suporta sistema retail iha eskala ne'ebe boot ba kompañia barak, inklui Leader Hypermarket Lda, Leader Mart Lda, Cement Timor SA, Auto Timor Leste Lda, no Lisun Timor Lda.",
@@ -32,21 +30,17 @@
       }
     ]
   },
-
   "projects": {
     "title": "Projetu sira",
     "itemTitle": "Projetu {number}",
     "itemDescription": "Projetu konseitu ida ne'ebé ha'u kria hodi hatudu abilidade dezenvolvimentu web no mobile."
   },
-
   "skills": {
     "title": "Abilidade sira"
   },
-
   "gallery": {
     "imageAlt": "Galeria {number}"
   },
-
   "contact": {
     "title": "Kontaktu Hau",
     "form": {
@@ -59,8 +53,10 @@
     "success": "✅ Mensajen haruka ho susesu!",
     "error": "❌ La konsege haruka mensajen. Favor koko fali."
   },
-
   "footer": {
     "text": "Troka ideia sira sai ba produtu dijital ne'ebé fiável."
+  },
+  "a11y": {
+    "skipToContent": "Skip to content"
   }
 }

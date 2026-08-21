@@ -8,6 +8,56 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Hero accent. The single warm value on an otherwise cool slate page:
+     amber is the "in transit" signal colour, which is literally what the
+     hero says. Used only on the connector label and the rule beneath it. */
+  --color-hero-accent: var(--hero-accent);
+  --color-hero-rule: var(--hero-rule);
+
+  /* Form control boundary. The shadcn --input value is 1.23:1 on white, which
+     fails WCAG 1.4.11 (3:1 for UI component boundaries) — and on a borderless
+     field that line is the only thing identifying the control. Measured 3.64:1
+     light / 3.09:1 dark. */
+  --color-field-border: var(--field-border);
+
+  /* Fluid hero type scale. Floors are tuned at 360px, caps at 1440px+.
+     Nothing in the hero may use an arbitrary size — these are the tokens. */
+  --text-name: clamp(2rem, 1.4rem + 2.6vw, 3.75rem);
+  --text-name--line-height: 1.05;
+  --text-name--letter-spacing: -0.035em;
+
+  --text-role: clamp(1.5rem, 1.15rem + 1.6vw, 2.5rem);
+  --text-role--line-height: 1.1;
+  --text-role--letter-spacing: -0.03em;
+
+  --text-stack: clamp(0.8125rem, 0.78rem + 0.2vw, 0.9375rem);
+  --text-stack--line-height: 1.75;
+  --text-stack--letter-spacing: 0.01em;
+
+  --text-eyebrow: clamp(0.6875rem, 0.66rem + 0.14vw, 0.8125rem);
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.18em;
+
+  --text-note: clamp(0.8125rem, 0.79rem + 0.16vw, 0.9375rem);
+  --text-note--line-height: 1.6;
+
+  --text-h2: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.02em;
+
+  /* Form text must never fall below 16px: iOS Safari zooms the viewport on
+     focus for anything smaller, which reads as a layout bug on every iPhone.
+     NOT named --text-input: that collides with the existing --color-input and
+     Tailwind resolves `text-input` to the colour, silently making form text
+     border-grey with no font-size at all. */
+  --text-control: 1rem;
+  --text-control--line-height: 1.5;
+
+  /* Micro-interaction timing. Mirrors `duration.micro` in motion/tokens.ts —
+     GSAP reads that, CSS transitions read this, and they must agree. */
+  --duration-micro: 150ms;
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -50,6 +100,14 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Smooth scrolling is motion. Anchor jumps must be instant for anyone who
+   asked not to be moved around. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -83,6 +141,12 @@ html {
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+
+  /* Measured 5.71:1 on --background. Small text, so 4.5:1 is the bar. */
+  --hero-accent: oklch(0.52 0.12 62);
+  --hero-rule: oklch(0.52 0.12 62 / 0.3);
+  /* Measured 3.64:1 on white. */
+  --field-border: oklch(0.62 0.02 255.5);
 }
 
 :root.dark,
@@ -118,6 +182,12 @@ html {
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+
+  /* Measured 10.63:1 on the dark --background. */
+  --hero-accent: oklch(0.8 0.14 78);
+  --hero-rule: oklch(0.8 0.14 78 / 0.32);
+  /* Measured 3.09:1 on the dark --background. */
+  --field-border: oklch(0.48 0.02 255.5);
 }
 
 html[data-theme="light"] {
@@ -134,6 +204,7 @@ html[data-theme="dark"] {
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
     transition: background-color 250ms ease, color 250ms ease;
   }
 
@@ -144,4 +215,198 @@ html[data-theme="dark"] {
   [data-slot="sheet-content"] {
     transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease;
   }
+}
+
+/* ---------------------------------------------------------------------------
+   Hero morph stage - three states, one DOM.
+
+   No JS            no [data-motion] attribute, so only the base rules below
+                    apply: state A, the connector and state B all sit in
+                    normal flow. Nothing is hidden, so the hero can never
+                    render blank.
+   Reduced motion   [data-motion="reduced"] resolves to the same layout. That
+                    is the designed static state, not a disabled animation.
+   Full motion      [data-motion="full"] overlays the two states in a single
+                    grid row and lifts the connector into a kicker row above
+                    them, so the morph happens in place.
+
+   The mode is stamped onto <html> by an inline probe in the document head, so
+   the layout is settled before first paint and switching modes costs no CLS.
+   --------------------------------------------------------------------------- */
+
+[data-hero-stage] {
+  display: grid;
+  justify-items: center;
+  row-gap: 1.5rem;
+}
+
+[data-hero-state] {
+  display: grid;
+  justify-items: center;
+  row-gap: 0.5rem;
+}
+
+html[data-motion="full"] [data-hero-stage] {
+  grid-template-areas:
+    "kicker"
+    "states";
+  row-gap: 0.75rem;
+}
+
+html[data-motion="full"] [data-hero-connector] {
+  grid-area: kicker;
+  opacity: 0;
+}
+
+/* Both states share one grid area, so the row reserves max(A, B) height and
+   swapping them moves nothing. This is what makes the morph cost zero CLS. */
+html[data-motion="full"] [data-hero-state] {
+  grid-area: states;
+}
+
+html[data-motion="full"] [data-hero-state="b"] {
+  opacity: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Press micro-interaction.
+
+   A real @utility rather than @apply, so it composes in JSX like any other
+   Tailwind class. Transform and opacity only, 150ms, and it collapses to zero
+   duration when the visitor asks for reduced motion — both via the media query
+   and via the data-motion attribute the head probe stamps.
+   --------------------------------------------------------------------------- */
+
+@utility press {
+  /* `scale` is listed separately from `transform`: Tailwind v4 compiles
+     scale-* to the standalone `scale` property, so transitioning `transform`
+     alone leaves the press animation snapping instantly. */
+  transition-property: transform, scale, opacity, color, background-color,
+    border-color;
+  transition-timing-function: var(--ease-standard);
+  transition-duration: var(--duration-micro);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .press {
+    transition-duration: 0ms;
+  }
+}
+
+html[data-motion="reduced"] .press {
+  transition-duration: 0ms;
+}
+
+/* Indeterminate submit spinner. Pure CSS — this is what replaced the
+   `react-spinners` PacmanLoader, removing that dependency entirely. */
+@keyframes spin-loader {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.submit-spinner {
+  animation: spin-loader 0.7s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .submit-spinner {
+    animation-duration: 2.4s;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Gallery — reduced-motion alternative.
+
+   The default gallery pins the viewport and converts vertical scroll into
+   horizontal movement. That hijacks scroll direction, which is a vestibular
+   trigger, so useHorizontalScroll builds no ScrollTrigger at all when the
+   visitor prefers reduced motion.
+
+   This is the designed replacement rather than "the animation removed": the
+   same track becomes a natively scrollable, snap-aligned strip, so every image
+   stays reachable by touch, trackpad, and keyboard.
+   --------------------------------------------------------------------------- */
+
+html[data-motion="reduced"] [data-gallery-viewport] {
+  height: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+html[data-motion="reduced"] [data-gallery-track] {
+  height: auto;
+}
+
+html[data-motion="reduced"] [data-gallery-item] {
+  scroll-snap-align: center;
+}
+
+/* Same treatment when JavaScript never runs: the pin can't exist, so without
+   this the track is clipped and only the first slide is reachable. */
+@media (scripting: none) {
+  [data-gallery-viewport] {
+    height: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  [data-gallery-track] {
+    height: auto;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Skip link. Visually hidden until focused, then pinned to the top-left.
+   --------------------------------------------------------------------------- */
+
+.skip-link {
+  /* fixed, not absolute: an absolutely-positioned skip link sits at the top of
+     the document, so pressing Tab after scrolling focuses something the
+     visitor cannot see. */
+  position: fixed;
+  left: var(--spacing);
+  top: var(--spacing);
+  z-index: 100;
+  transform: translateY(-200%);
+  transition-property: transform;
+  transition-duration: var(--duration-micro);
+  transition-timing-function: var(--ease-standard);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition-duration: 0ms;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Touch target expansion.
+
+   Several controls in the mobile menu render smaller than the 44px minimum —
+   the sheet's close button was 16x16. Growing them with padding would change
+   the menu's spacing, so instead each one gets a centred, invisible overlay
+   that is at least 44x44. The tap lands on the pseudo-element and bubbles to
+   the control, and nothing moves by a pixel.
+   --------------------------------------------------------------------------- */
+
+@utility tap-target {
+  position: relative;
+}
+
+.tap-target::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: 100%;
+  height: 100%;
+  min-width: 44px;
+  min-height: 44px;
 }

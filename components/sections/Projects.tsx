@@ -19,9 +19,9 @@ export default function Projects() {
         bg-linear-to-b from-background via-background to-muted/20"
       >
         <div className="max-w-6xl mx-auto">
-          <h3 className="text-3xl font-bold mb-12 tracking-tight">
+          <h2 className="text-3xl font-bold mb-12 tracking-tight">
             {t("projects.title")}
-          </h3>
+          </h2>
 
           <div className="grid gap-6 md:grid-cols-3">
             {[1, 2, 3].map((p) => (

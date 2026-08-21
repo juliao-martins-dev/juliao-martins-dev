@@ -1,7 +1,8 @@
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import Navbar from "@/components/layout/Navbar";
+import SkipLink from "@/components/layout/SkipLink";
 import ComputerVisual from "@/components/sections/ComputerVisual";
-import Home from "@/components/sections/Home";
+import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Projects from "@/components/sections/Projects";
 import SKills from "@/components/sections/Skills";
@@ -9,21 +10,35 @@ import HorizontalGallery from "@/components/sections/HorizontalGallery";
 import ContactForm from "@/components/sections/ContactForm";
 import Footer from "@/components/layout/Footer";
 
-
 export default function PortfolioPage() {
-
   return (
-    <main className="font-sans scroll-smooth overflow-hidden">
+    <>
+      {/*
+        First focusable element on the page, so a keyboard user can jump past
+        the six nav links. Sits outside <main> because <main> is its target.
+      */}
+      <SkipLink />
+
       <Navbar />
       <ComputerVisual />
-      <Home />
-      <About />
-      <Projects />
-      <SKills />
-      <HorizontalGallery />
-      <ContactForm />
-      <ScrollToTop /> {/* ===> Scroll To Top */}
-      <Footer />      
-    </main>
+
+      {/*
+        Previously everything lived inside a single <main> — including the
+        <nav> and the footer, which do not belong to the main landmark.
+        `scroll-smooth` was also duplicated here; it lives on <html> in
+        globals.css, where it is gated behind prefers-reduced-motion.
+      */}
+      <main id="main-content" className="overflow-hidden">
+        <Hero />
+        <About />
+        <Projects />
+        <SKills />
+        <HorizontalGallery />
+        <ContactForm />
+      </main>
+
+      <ScrollToTop />
+      <Footer />
+    </>
   );
 }

@@ -1,9 +1,12 @@
 "use client";
 
-import { animateTimeline } from "@/animations/timeline";
+import { useGSAP } from "@gsap/react";
 import { TimelineItem } from "@/types/timeline";
 import { useTranslations } from "next-intl";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+
+import { gsap } from "@/motion/registry";
+import { duration, ease, staggerAmount } from "@/motion/tokens";
 
 import {
   Card,
@@ -33,11 +36,88 @@ export default function About() {
   const tAbout = useTranslations("about");
   const timeline = tAbout.raw("timeline") as TimelineItem[];
 
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    const cleanup = animateTimeline(sectionRef.current);
-    return cleanup;
-  }, []);
+  useGSAP(
+    () => {
+      const root = sectionRef.current;
+      if (!root) return;
+
+      const mm = gsap.matchMedia();
+
+      mm.add(
+        {
+          full: "(prefers-reduced-motion: no-preference)",
+          reduced: "(prefers-reduced-motion: reduce)",
+        },
+        (context) => {
+          const conditions = context.conditions as
+            | { full: boolean; reduced: boolean }
+            | undefined;
+
+          // Reduced-motion branch: the timeline is meaningful content, so the
+          // designed static state is simply the finished state — cards, pins
+          // and rails fully visible, exactly where the animation would have
+          // left them. Nothing to undo, because nothing is ever hidden by CSS.
+          if (!conditions?.full) return;
+
+          const cards = root.querySelectorAll<HTMLElement>(".timeline-card");
+          const lines = root.querySelectorAll<HTMLElement>(".timeline-line");
+          const bases = root.querySelectorAll<HTMLElement>(".timeline-base");
+          if (cards.length === 0) return;
+
+          const tl = gsap.timeline({
+            defaults: {
+              ease: ease.out,
+              // Don't pre-apply the FROM state on mount: React Strict Mode's
+              // double-mount plus `once: true` could otherwise leave cards
+              // stuck at opacity 0 if the trigger already passed.
+              immediateRender: false,
+            },
+            scrollTrigger: { trigger: root, start: "top 80%", once: true },
+          });
+
+          tl.from(cards, {
+            opacity: 0,
+            y: 50,
+            duration: duration.xl,
+            stagger: { amount: staggerAmount.loose },
+            clearProps: "opacity,transform",
+          });
+
+          if (lines.length) {
+            tl.from(
+              lines,
+              {
+                scaleY: 0,
+                transformOrigin: "top center",
+                duration: duration.lg,
+                stagger: { amount: staggerAmount.loose },
+                clearProps: "transform",
+              },
+              "-=0.55"
+            );
+          }
+
+          if (bases.length) {
+            tl.from(
+              bases,
+              {
+                opacity: 0,
+                scale: 0.4,
+                duration: duration.md,
+                stagger: { amount: staggerAmount.loose },
+                ease: "back.out(1.8)",
+                clearProps: "opacity,transform",
+              },
+              "-=0.35"
+            );
+          }
+        }
+      );
+
+      return () => mm.revert();
+    },
+    { scope: sectionRef }
+  );
 
   return (
     <section
@@ -45,7 +125,7 @@ export default function About() {
       id="about"
       className="min-h-screen max-w-6xl mx-auto px-6 py-24"
     >
-      <h3 className="text-3xl font-bold mb-6">{t("about.title")}</h3>
+      <h2 className="text-3xl font-bold mb-6">{t("about.title")}</h2>
 
       <p className="text-muted-foreground mb-16 max-w-3xl leading-relaxed">
         {t("about.paragraph1")}
