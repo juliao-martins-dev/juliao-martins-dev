@@ -45,6 +45,8 @@ export const staggerAmount = {
  */
 export const hero = {
   holdA: 1.6,
+  /** Dwell on state B before yoyo reverses, mirroring holdA. */
+  holdB: 1.6,
   connectorIn: duration.sm,
   stateOut: duration.md,
   stateIn: duration.lg,

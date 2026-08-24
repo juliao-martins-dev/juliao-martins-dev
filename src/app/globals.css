@@ -237,6 +237,8 @@ html[data-theme="dark"] {
    --------------------------------------------------------------------------- */
 
 [data-hero-stage] {
+  /* Positioning context for the sprite overlay. */
+  position: relative;
   display: grid;
   justify-items: center;
   row-gap: 1.5rem;
@@ -268,6 +270,10 @@ html[data-motion="full"] [data-hero-state] {
 
 html[data-motion="full"] [data-hero-state="b"] {
   opacity: 0;
+  /* Not just opacity: the two states share one grid cell, and B sits later in
+     the DOM, so at opacity 0 it would still swallow every hover aimed at the
+     visible A. GSAP's autoAlpha keeps managing this once the morph runs. */
+  visibility: hidden;
 }
 
 /* ---------------------------------------------------------------------------

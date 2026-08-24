@@ -8,7 +8,8 @@ import { useHorizontalScroll } from "@/hooks/useHorizontalScroll";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { galleryItems } from "@/data/gallery";
 
-import GallerySprites from "./GallerySprites";
+import SpriteBurst from "@/components/motion/SpriteBurst";
+
 import GalleryVideo from "./GalleryVideo";
 
 
@@ -28,6 +29,7 @@ export default function HorizontalGallery() {
       id="gallery"
       ref={galleryRef}
       data-gallery-viewport=""
+      data-sprite-scope=""
       /*
         Under reduced motion this section becomes a real horizontal scroll
         container (see globals.css). A scroll container with no focusable
@@ -91,8 +93,11 @@ export default function HorizontalGallery() {
         <div aria-hidden className="w-12 shrink-0" />
       </div>
 
-      {/* Finds the section and track itself; see GallerySprites. */}
-      <GallerySprites />
+      <SpriteBurst
+        set="stack"
+        trigger="[data-gallery-item]"
+        mode="hover-once"
+      />
     </section>
   );
 }

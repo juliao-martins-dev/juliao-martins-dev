@@ -3,6 +3,8 @@ import Image from "next/image";
 import { heroCopy } from "@/content/hero";
 import portrait from "@/public/juliao_martins.jpg";
 
+import SpriteBurst from "@/components/motion/SpriteBurst";
+
 import HeroRoleMorph from "./HeroRoleMorph";
 
 /**
@@ -17,6 +19,7 @@ export default function Hero() {
   return (
     <section
       id="home"
+      data-sprite-scope=""
       className="relative flex min-h-svh items-center justify-center px-5 py-24"
     >
       <div className="mx-auto flex w-full max-w-2xl flex-col items-center text-center">
@@ -48,6 +51,21 @@ export default function Hero() {
 
         <HeroRoleMorph />
       </div>
+
+      {/*
+        One emitter per role, each with its own logo set. Scoped to the whole
+        section rather than the role line: the stage is only a couple of lines
+        tall, and an overlay that size clipped every sprite before it could
+        fall. Here they have the full hero to drop through.
+      */}
+      <SpriteBurst
+        set="stack"
+        trigger='[data-hero-state="a"] [data-hero-role]'
+      />
+      <SpriteBurst
+        set="ai"
+        trigger='[data-hero-state="b"] [data-hero-role]'
+      />
     </section>
   );
 }

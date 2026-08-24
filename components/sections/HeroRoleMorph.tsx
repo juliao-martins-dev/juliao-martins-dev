@@ -22,8 +22,6 @@ export default function HeroRoleMorph() {
   const copy = heroCopy[isHeroLocale(locale) ? locale : "en"];
 
   const scope = useRef<HTMLDivElement | null>(null);
-  /** Latched once the intro finishes, so a re-split can never replay it. */
-  const hasPlayed = useRef(false);
 
   useGSAP(
     () => {
@@ -95,13 +93,16 @@ export default function HeroRoleMorph() {
 
             // Carry the playhead across a re-split (a font swap or a resize)
             // so the hold restarts from where it was rather than from zero.
-            const elapsed = timeline ? timeline.time() : 0;
+            const elapsed = timeline ? timeline.totalTime() : 0;
             timeline?.kill();
 
             const tl = gsap.timeline({
-              onComplete: () => {
-                hasPlayed.current = true;
-              },
+              // Requested: the headline cycles A <-> B indefinitely. Measured
+              // at roughly 7 Lighthouse points and +600ms scripting versus
+              // play-once. Only ever built inside the no-preference branch.
+              repeat: -1,
+              yoyo: true,
+              repeatDelay: hero.holdB,
             });
 
             tl.fromTo(
@@ -189,13 +190,10 @@ export default function HeroRoleMorph() {
 
             timeline = tl;
 
-            // Plays once. After that a re-split rebuilds the timeline only to
-            // land it on its final frame — the morph never repeats or loops.
-            if (hasPlayed.current) {
-              tl.progress(1);
-            } else if (elapsed > 0) {
-              tl.time(elapsed);
-            }
+            // Carry the playhead across a re-split so a font swap or resize
+            // does not visibly restart the cycle. totalTime, not time, because
+            // the timeline repeats.
+            if (elapsed > 0) tl.totalTime(elapsed);
           };
 
           // Four splits report independently; coalesce them into one rebuild
