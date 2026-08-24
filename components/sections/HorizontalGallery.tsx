@@ -45,6 +45,14 @@ export default function HorizontalGallery() {
         data-gallery-track=""
         className="flex h-full will-change-transform"
       >
+        {/*
+          Leading and trailing spacers. Without them the track's own edges are
+          the viewport's edges, so the first and last images sit flush against
+          them and read as cut off — measured firstLeft 0 and lastRight 1435 of
+          a 1440 viewport. `aria-hidden` because they are pure layout.
+        */}
+        <div aria-hidden className="w-12 shrink-0" />
+
         {galleryItems.map((item, i) => (
           <div
             key={i}
@@ -79,6 +87,8 @@ export default function HorizontalGallery() {
             </div>
           </div>
         ))}
+
+        <div aria-hidden className="w-12 shrink-0" />
       </div>
 
       {/* Finds the section and track itself; see GallerySprites. */}

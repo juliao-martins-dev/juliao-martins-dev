@@ -98,9 +98,19 @@ export const sprites = {
   /** One of each logo per burst: HTML, CSS, JS, TS, React, Next, GSAP. */
   perBurst: 7,
   max: 84,
-  /** px travelled outward from the emission point. */
-  travel: 130,
-  travelJitter: 60,
+  /*
+   * Real projectile motion via Physics2DPlugin rather than a radial fan.
+   * Angles are degrees with 0 = right and y pointing down, so a negative
+   * angle launches upward; gravity then arcs each sprite over and drops it.
+   */
+  velocityMin: 320,
+  velocityMax: 620,
+  /** Upward spray, biased slightly outward on both sides. */
+  angleMin: -150,
+  angleMax: -30,
+  gravity: 1100,
+  /** Seconds a sprite stays airborne before it has fallen away. */
+  life: 1.9,
   /** px; matches the eyebrow type size so the logos read as a caption, not clip-art. */
   size: 26,
   spin: 220,

@@ -13,7 +13,7 @@ import {
 } from "react-icons/si";
 
 import { gsap } from "@/motion/registry";
-import { duration, ease, sprites } from "@/motion/tokens";
+import { ease, sprites } from "@/motion/tokens";
 
 /**
  * Official brand marks, via react-icons' Simple Icons set — already a
@@ -153,51 +153,72 @@ export default function GallerySprites() {
             const originX = slideBox.left - sectionBox.left + slideBox.width / 2;
             const originY = slideBox.top - sectionBox.top + slideBox.height / 2;
 
-            banks.forEach((bank, i) => {
-              // Evenly fan the seven logos, jittered so repeat clicks on the
-              // same slide do not stack identical bursts.
-              const angle =
-                (i / banks.length) * Math.PI * 2 + Math.random() * 0.6;
-              const distance =
-                sprites.travel + Math.random() * sprites.travelJitter;
-
+            banks.forEach((bank) => {
               const node = acquire(bank);
+
+              /*
+               * Launch upward at a random angle and let gravity do the rest:
+               * the sprite rises, arcs over, and falls away below the slide.
+               * Physics2DPlugin integrates velocity + gravity per frame, which
+               * is why the arc reads as real weight rather than a tween along
+               * a straight line.
+               */
+              const velocity = gsap.utils.random(
+                sprites.velocityMin,
+                sprites.velocityMax
+              );
+              const angle = gsap.utils.random(sprites.angleMin, sprites.angleMax);
+
+              // Reset before reuse: a recycled node still carries the previous
+              // flight's transform.
+              gsap.set(node, {
+                x: originX,
+                y: originY,
+                scale: 0,
+                autoAlpha: 0,
+                rotation: 0,
+              });
+
               const tl = gsap.timeline({
                 onComplete: () => release(bank, node),
               });
               bank.busy.push({ node, tl });
 
-              tl.fromTo(
+              // Pop into existence at the emission point.
+              tl.to(node, {
+                scale: 1,
+                autoAlpha: 1,
+                duration: sprites.popIn,
+                ease: ease.out,
+              });
+
+              // The flight itself, running from t=0 alongside the pop.
+              tl.to(
                 node,
-                { x: originX, y: originY, scale: 0, autoAlpha: 0, rotation: 0 },
                 {
-                  scale: 1,
-                  autoAlpha: 1,
-                  duration: sprites.popIn,
-                  ease: ease.out,
-                }
-              )
-                .to(
-                  node,
-                  {
-                    x: originX + Math.cos(angle) * distance,
-                    y: originY + Math.sin(angle) * distance,
-                    rotation: gsap.utils.random(-sprites.spin, sprites.spin),
-                    duration: sprites.drift,
-                    ease: ease.out,
+                  duration: sprites.life,
+                  physics2D: {
+                    velocity,
+                    angle,
+                    gravity: sprites.gravity,
                   },
-                  0
-                )
-                .to(
-                  node,
-                  {
-                    autoAlpha: 0,
-                    scale: 0.6,
-                    duration: sprites.fade,
-                    ease: ease.in,
-                  },
-                  `>-${duration.sm}`
-                );
+                  rotation: gsap.utils.random(-sprites.spin, sprites.spin),
+                  ease: ease.none,
+                },
+                0
+              );
+
+              // Fade on the way down, finishing exactly as the flight ends, so
+              // sprites dissolve mid-fall instead of vanishing at their apex.
+              tl.to(
+                node,
+                {
+                  autoAlpha: 0,
+                  duration: sprites.fade,
+                  ease: ease.in,
+                },
+                sprites.life - sprites.fade
+              );
             });
           };
 
