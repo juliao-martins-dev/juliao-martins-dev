@@ -8,6 +8,7 @@ import { useHorizontalScroll } from "@/hooks/useHorizontalScroll";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { galleryItems } from "@/data/gallery";
 
+import GallerySprites from "./GallerySprites";
 import GalleryVideo from "./GalleryVideo";
 
 
@@ -79,6 +80,9 @@ export default function HorizontalGallery() {
           </div>
         ))}
       </div>
+
+      {/* Finds the section and track itself; see GallerySprites. */}
+      <GallerySprites />
     </section>
   );
 }

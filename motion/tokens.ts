@@ -86,6 +86,29 @@ export const gallery = {
  * visual one: three.js is ~244KB gz and starts a continuous render loop, and
  * previously all of that happened while the visitor was still on the hero.
  */
+/**
+ * Logo sprite emitter on the gallery slides.
+ *
+ * `max` is the important one: the brief is "more clicks, more logos", which is
+ * unbounded by definition. Bursts stay unlimited, but live sprites are capped
+ * and the oldest recycle — otherwise a determined visitor accumulates hundreds
+ * of animating nodes on the one section that already runs 20 ScrollTriggers.
+ */
+export const sprites = {
+  /** One of each logo per burst: HTML, CSS, JS, TS, React, Next, GSAP. */
+  perBurst: 7,
+  max: 84,
+  /** px travelled outward from the emission point. */
+  travel: 130,
+  travelJitter: 60,
+  /** px; matches the eyebrow type size so the logos read as a caption, not clip-art. */
+  size: 26,
+  spin: 220,
+  popIn: duration.sm,
+  drift: duration.xl,
+  fade: duration.md,
+} as const;
+
 export const computer = {
   /** scrollY in px past which the scene mounts and fades in. */
   revealAt: 100,
