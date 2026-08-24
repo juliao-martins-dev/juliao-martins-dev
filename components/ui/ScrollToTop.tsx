@@ -1,18 +1,27 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useTranslations } from "next-intl"
+import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ChevronUp } from "lucide-react"
 
 export default function ScrollToTop() {
+  const t = useTranslations()
   const [visible, setVisible] = useState<boolean>(false)
+  // Mirror of `visible`, so the handler can bail before touching React.
+  const visibleRef = useRef(false)
 
   useEffect(() => {
     const toggleVisibility = () => {
-      setVisible(window.scrollY > 300)
+      const next = window.scrollY > 300
+      if (next === visibleRef.current) return
+      visibleRef.current = next
+      setVisible(next)
     }
 
-    window.addEventListener("scroll", toggleVisibility)
+    toggleVisibility()
+    // Passive: never calls preventDefault, so scrolling stays off the main thread.
+    window.addEventListener("scroll", toggleVisibility, { passive: true })
     return () => window.removeEventListener("scroll", toggleVisibility)
   }, [])
 
@@ -25,9 +34,9 @@ export default function ScrollToTop() {
       onClick={scrollToTop}
       size="icon"
       variant="default"
-      aria-label="Scroll to top"
+      aria-label={t("a11y.backToTop")}
       className={`
-        fixed bottom-14 right-7 z-50 rounded-full shadow-lg
+        fixed bottom-14 right-7 z-50 size-11 rounded-full shadow-lg
         transition-all duration-300
         ${visible
           ? "opacity-100 scale-100"

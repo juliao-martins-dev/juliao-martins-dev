@@ -19,9 +19,9 @@ export default function SKills() {
         bg-linear-to-b from-muted/10 via-background to-muted/20"
     >
       <div className="max-w-6xl mx-auto">
-        <h3 className="text-3xl font-bold mb-12 tracking-tight">
+        <h2 className="text-3xl font-bold mb-12 tracking-tight">
           {t("skills.title")}
-        </h3>
+        </h2>
 
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
           {skills.map((skill) => (

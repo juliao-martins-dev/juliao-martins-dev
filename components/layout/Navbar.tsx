@@ -1,12 +1,6 @@
 "use client";
 
 import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
-import {
   Sheet,
   SheetContent,
   SheetTrigger,
@@ -59,14 +53,16 @@ function ThemeToggleButton({
   onToggle: () => void;
   className?: string;
 }) {
+  const t = useTranslations();
+
   return (
     <Button
       type="button"
       variant="ghost"
       onClick={onToggle}
-      aria-label="Toggle dark mode"
+      aria-label={t("a11y.changeTheme")}
       className={cn(
-        "cursor-pointer relative h-10 w-[4.5rem] rounded-full border border-border/60 bg-background/80 p-1 shadow-sm backdrop-blur-md transition-all duration-300",
+        "tap-target cursor-pointer relative h-10 w-[4.5rem] rounded-full border border-border/60 bg-background/80 p-1 shadow-sm backdrop-blur-md transition-all duration-300",
         "hover:bg-background hover:shadow-md",
         className
       )}
@@ -123,26 +119,35 @@ export default function Navbar() {
           Julião Martins
         </p>
 
-        <NavigationMenu className="hidden sm:flex">
-          <NavigationMenuList className="gap-6">
-            {navItems.map((item) => (
-              <NavigationMenuItem key={item.href}>
-                <NavigationMenuLink
-                  href={item.href}
-                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  {item.label}
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            ))}
-            <NavigationMenuItem>
-              <ThemeToggleButton onToggle={toggleTheme} />
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <LanguageSwitcher className="ml-1" />
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+        {/*
+          Was a Radix NavigationMenu. That primitive exists for menus with
+          popover submenus; this is a flat list of anchors, so it shipped
+          ~18KB gz of dismissable-layer/collection/presence machinery for
+          nothing — and its root rendered a second <nav> inside this one,
+          giving the page two navigation landmarks.
+
+          The classes below are the exact resolved output of the old
+          NavigationMenuList + NavigationMenuLink after tailwind-merge, so the
+          rendered result is pixel-identical.
+        */}
+        <ul className="hidden list-none items-center justify-center gap-6 sm:flex">
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <a
+                href={item.href}
+                className="flex flex-col gap-1 rounded-sm p-2 text-sm font-medium text-muted-foreground outline-none transition-colors hover:bg-accent hover:text-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <ThemeToggleButton onToggle={toggleTheme} />
+          </li>
+          <li>
+            <LanguageSwitcher className="ml-1" />
+          </li>
+        </ul>
 
         <div className="flex items-center gap-2 sm:hidden">
           <ThemeToggleButton onToggle={toggleTheme} />
@@ -152,8 +157,8 @@ export default function Navbar() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="border border-border/60 bg-background/70 backdrop-blur-sm"
-                  aria-label="Open Menu"
+                  className="tap-target border border-border/60 bg-background/70 backdrop-blur-sm"
+                  aria-label={t("a11y.openMenu")}
                 >
                   <Menu className="h-5 w-5" />
                 </Button>
@@ -161,6 +166,7 @@ export default function Navbar() {
 
               <SheetContent
                 side="right"
+                closeLabel={t("a11y.closeMenu")}
                 className="w-72 border-l border-border/50 bg-background/95 backdrop-blur-xl"
               >
                 <div className="mt-10 flex flex-col items-center gap-6">
@@ -168,7 +174,7 @@ export default function Navbar() {
                     <a
                       key={item.href}
                       href={item.href}
-                      className="text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
+                      className="tap-target text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
                       onClick={() => setOpen(false)}
                     >
                       {item.label}
@@ -189,7 +195,7 @@ export default function Navbar() {
               variant="ghost"
               size="icon"
               className="border border-border/60 bg-background/70 backdrop-blur-sm"
-              aria-label="Open Menu"
+              aria-label={t("a11y.openMenu")}
               aria-hidden
               tabIndex={-1}
             >

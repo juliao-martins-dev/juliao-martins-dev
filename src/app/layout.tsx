@@ -1,7 +1,41 @@
 import { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import { cookies } from "next/headers";
 
 import React from "react";
+
+/**
+ * Two families, both self-hosted by next/font. `--font-geist-sans` and
+ * `--font-geist-mono` were referenced by globals.css but never defined until
+ * now, which meant the whole site was rendering in the browser default face.
+ */
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+  // Measured on this page (Lighthouse mobile, simulated throttling).
+  // While three.js still loaded eagerly it saturated the link, and preloading
+  // the fonts starved the render-blocking CSS (perf 40 vs 53 without preload).
+  // Once three.js moved behind the `load` event that inverted:
+  //   swap + preload    -> perf 76-78, CLS 0      <- chosen
+  //   swap, no preload  -> perf 71-77, CLS 0.001
+  // `swap` guarantees the chosen typography is actually seen.
+  display: "swap",
+  preload: true,
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+  // Measured on this page (Lighthouse mobile, simulated throttling).
+  // While three.js still loaded eagerly it saturated the link, and preloading
+  // the fonts starved the render-blocking CSS (perf 40 vs 53 without preload).
+  // Once three.js moved behind the `load` event that inverted:
+  //   swap + preload    -> perf 76-78, CLS 0      <- chosen
+  //   swap, no preload  -> perf 71-77, CLS 0.001
+  // `swap` guarantees the chosen typography is actually seen.
+  display: "swap",
+  preload: true,
+});
 
 import IntlProvider from "../../components/IntlProvider";
 import enMessages from "../../messages/en.json";
@@ -33,6 +67,27 @@ const THEME_SCRIPT = `
     document.documentElement.setAttribute("data-theme", theme);
     document.documentElement.classList.toggle("dark", theme === "dark");
     document.documentElement.style.colorScheme = theme;
+  } catch (_) {}
+})();
+`;
+
+/**
+ * Motion probe. Runs before first paint, alongside the theme script.
+ *
+ * Stamping the mode onto <html> here — rather than after hydration — is what
+ * lets the hero pick its layout in CSS with zero layout shift, and is why the
+ * JS-disabled path degrades correctly: with no JS this attribute is simply
+ * absent, and the hero's base CSS renders every state in normal flow.
+ */
+const MOTION_SCRIPT = `
+(() => {
+  try {
+    document.documentElement.setAttribute(
+      "data-motion",
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "reduced"
+        : "full"
+    );
   } catch (_) {}
 })();
 `;
@@ -94,21 +149,16 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
 
-    images: [
-      {
-        url: "/juliao_martins.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Julião Martins Portfolio",
-      },
-    ],
+    // `images` is intentionally omitted: src/app/opengraph-image.tsx generates
+    // a real 1200x630 card and Next wires it up automatically. The previous
+    // entry pointed at a 354x472 portrait while declaring 1200x630.
   },
 
   twitter: {
     card: "summary_large_image",
     title: "Julião Martins – Junior Developer",
     description: "Portfolio and projects built with React Native & Next.js",
-    images: ["/juliao_martins.jpg"],
+    // Inherits the generated opengraph-image; see above.
   },
 
   robots: {
@@ -130,9 +180,14 @@ export default async function RootLayout({
     : "en";
 
   return (
-    <html lang={initialLocale} suppressHydrationWarning>
+    <html
+      lang={initialLocale}
+      className={`${geistSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        <script dangerouslySetInnerHTML={{ __html: MOTION_SCRIPT }} />
       </head>
       <body>
         <IntlProvider initialLocale={initialLocale} messagesMap={messagesMap}>

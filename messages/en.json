@@ -7,12 +7,10 @@
     "gallery": "Gallery",
     "contact": "Contact"
   },
-
   "home": {
     "title": "Hi, I'm Julião",
     "subtitle": "Junior Developer | Next.js | React Native"
   },
-
   "about": {
     "title": "About Me",
     "paragraph1": "I am an IT Professional and Junior Developer with over two years of professional experience in IT support and systems maintenance. I previously worked at Leader Group, where I handled hardware, networking, and database management for retail systems for both cashier (Frontline) and back-office (Backline) operations. I also supported large-scale retail systems across multiple companies, including Leader Hypermarket Lda, Leader Mart Lda, Cement Timor SA, Auto Timor Leste Lda, and Lisun Timor Lda.",
@@ -32,21 +30,17 @@
       }
     ]
   },
-
   "projects": {
     "title": "Projects",
     "itemTitle": "Project {number}",
     "itemDescription": "A concept project created to demonstrate my web and mobile development skills."
   },
-
   "skills": {
     "title": "Skills"
   },
-
   "gallery": {
     "imageAlt": "Gallery {number}"
   },
-
   "contact": {
     "title": "Contact Me",
     "form": {
@@ -59,8 +53,16 @@
     "success": "✅ Message sent successfully!",
     "error": "❌ Failed to send message. Please try again."
   },
-
   "footer": {
     "text": "Turning ideas into reliable digital products."
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "changeTheme": "Change theme",
+    "openMenu": "Open menu",
+    "closeMenu": "Close",
+    "changeLanguage": "Change language",
+    "languages": "Languages",
+    "backToTop": "Back to top"
   }
 }
