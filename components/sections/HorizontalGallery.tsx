@@ -50,7 +50,7 @@ export default function HorizontalGallery() {
             data-gallery-item=""
             className="w-[min(90vw,92%)] sm:w-[30vw] lg:w-[25vw] shrink-0 p-6 box-content flex items-center justify-center"
           >
-            <div className="relative aspect-square w-full">
+            <div data-gallery-media="" className="relative aspect-square w-full">
               {/*
                 TODO: these labels are positional placeholders, not
                 descriptions. Julião needs to supply what each slide actually

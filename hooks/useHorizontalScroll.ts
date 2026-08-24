@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import { RefObject } from "react";
 
 import { gsap, ScrollTrigger } from "@/motion/registry";
-import { ease } from "@/motion/tokens";
+import { ease, gallery } from "@/motion/tokens";
 
 interface Props {
   containerRef: RefObject<HTMLDivElement | null>;
@@ -56,7 +56,74 @@ export function useHorizontalScroll({ containerRef, trackRef }: Props) {
             },
           });
 
+          /*
+           * Per-slide focus, driven off the horizontal tween itself.
+           *
+           * `containerAnimation` is ScrollTrigger's mechanism for triggering on
+           * elements that move horizontally inside a scrubbed tween: start/end
+           * are read against the slide's position within that tween rather than
+           * against page scroll. Doing the maths by hand would drift out of
+           * sync with the pin the moment anything re-flows.
+           */
+          const slides = gsap.utils.toArray<HTMLElement>(
+            track.querySelectorAll("[data-gallery-item]")
+          );
+
+          const extras = slides.flatMap((slide) => {
+            const built: gsap.core.Tween[] = [];
+
+            // Slides arrive slightly small and dim, and settle at full size as
+            // they reach the middle of the viewport.
+            built.push(
+              gsap.fromTo(
+                slide,
+                { scale: gallery.scaleFrom, autoAlpha: gallery.alphaFrom },
+                {
+                  scale: gallery.scaleTo,
+                  autoAlpha: 1,
+                  ease: ease.none,
+                  scrollTrigger: {
+                    trigger: slide,
+                    containerAnimation: tween,
+                    start: "left right",
+                    end: "center center",
+                    scrub: true,
+                  },
+                }
+              )
+            );
+
+            // The media drifts against the track, which reads as depth rather
+            // than a flat conveyor belt.
+            const media = slide.querySelector<HTMLElement>("[data-gallery-media]");
+            if (media) {
+              built.push(
+                gsap.fromTo(
+                  media,
+                  { xPercent: gallery.parallax },
+                  {
+                    xPercent: -gallery.parallax,
+                    ease: ease.none,
+                    scrollTrigger: {
+                      trigger: slide,
+                      containerAnimation: tween,
+                      start: "left right",
+                      end: "right left",
+                      scrub: true,
+                    },
+                  }
+                )
+              );
+            }
+
+            return built;
+          });
+
           return () => {
+            extras.forEach((t) => {
+              t.scrollTrigger?.kill();
+              t.kill();
+            });
             tween.scrollTrigger?.kill();
             tween.kill();
           };

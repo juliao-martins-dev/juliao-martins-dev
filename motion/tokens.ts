@@ -45,16 +45,6 @@ export const staggerAmount = {
  */
 export const hero = {
   holdA: 1.6,
-  /**
-   * Trailing dwell on state B, mirroring holdA.
-   *
-   * With `yoyo`, the timeline plays forward then backward. Putting an equal
-   * hold at each end makes the reverse pass symmetric: state A is on screen
-   * for holdA + holdB contiguous (its own head hold plus the reverse tail),
-   * and state B gets exactly the same. Without this, B would be reached on the
-   * final frame and immediately reverse — a flash rather than a headline.
-   */
-  holdB: 1.6,
   connectorIn: duration.sm,
   stateOut: duration.md,
   stateIn: duration.lg,
@@ -66,4 +56,37 @@ export const hero = {
   outShift: -100,
   inShift: 100,
   connectorRise: 8,
+
+  /**
+   * Split-flap. Each character rotates on its X axis inside its own SplitText
+   * mask, so the old role flips away and the new one flips in — a departure
+   * board, which is what a career transition actually looks like.
+   */
+  flipOut: -90,
+  flipIn: 90,
+  /** Without perspective on the slot, rotationX reads as a vertical squash. */
+  perspective: 420,
+} as const;
+
+/**
+ * Gallery slide focus. Both effects hang off the existing horizontal tween via
+ * ScrollTrigger's `containerAnimation`, so they stay in lockstep with the pin
+ * instead of running their own scroll maths.
+ */
+export const gallery = {
+  scaleFrom: 0.88,
+  scaleTo: 1,
+  alphaFrom: 0.55,
+  /** xPercent drift of the media inside its slide, against the track. */
+  parallax: 12,
+} as const;
+
+/**
+ * The 3D scene. Gating the mount on scroll is a performance win, not just a
+ * visual one: three.js is ~244KB gz and starts a continuous render loop, and
+ * previously all of that happened while the visitor was still on the hero.
+ */
+export const computer = {
+  /** scrollY in px past which the scene mounts and fades in. */
+  revealAt: 100,
 } as const;

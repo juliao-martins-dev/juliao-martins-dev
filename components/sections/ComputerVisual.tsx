@@ -1,23 +1,25 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { useScrolledPast } from "@/hooks/useScrolledPast";
+import { computer } from "@/motion/tokens";
 
 /**
  * The three.js scene is the heaviest thing on the site by a wide margin
- * (~358KB gz of three + @react-three, and the dominant share of main-thread
- * script evaluation). It is purely decorative, so it now loads under three
- * conditions instead of eagerly on every request:
+ * (~244KB gz of three + @react-three, plus a continuous `useFrame` loop). It is
+ * purely decorative, so it loads under three conditions rather than eagerly:
  *
  *   1. never server-rendered            -> ssr: false
  *   2. never on touch or small screens  -> pointer: fine and >= md
- *   3. never before the page has loaded -> waits for the `load` event
+ *   3. never while the hero is on screen -> only past `computer.revealAt`
  *
- * (3) is the important one: loading it eagerly put it directly in front of the
- * LCP image. Waiting for `load` guarantees it cannot compete with first paint.
+ * (3) replaced an earlier `load`-event gate. Waiting for scroll rather than
+ * load means the bundle and the render loop stay out of the picture entirely
+ * while the visitor is looking at the hero — which is also the LCP window.
  *
- * This also replaces the previous `<main>` wrapper, which was nested inside the
- * page's own `<main>` — invalid HTML and a duplicate landmark.
+ * This also replaced a `<main>` wrapper that was nested inside the page's own
+ * `<main>`: invalid HTML and a duplicate landmark.
  */
 const Scene = dynamic(() => import("../Scene"), {
   ssr: false,
@@ -27,28 +29,25 @@ const Scene = dynamic(() => import("../Scene"), {
 const DESKTOP_POINTER = "(min-width: 768px) and (pointer: fine)";
 
 export default function ComputerVisual() {
-  const [show, setShow] = useState(false);
+  const allowed = useMediaQuery(DESKTOP_POINTER);
+  const { past, everPast } = useScrolledPast(computer.revealAt);
 
-  useEffect(() => {
-    if (!window.matchMedia(DESKTOP_POINTER).matches) return;
-
-    const arm = () => setShow(true);
-
-    if (document.readyState === "complete") {
-      arm();
-      return;
-    }
-
-    window.addEventListener("load", arm, { once: true });
-    return () => window.removeEventListener("load", arm);
-  }, []);
-
-  if (!show) return null;
+  /*
+   * Mount on the first crossing, then stay mounted and let opacity follow
+   * `past`. Unmounting on scroll-up would tear down the WebGL context and
+   * re-fetch my_computer.glb every time — far more expensive than keeping one
+   * idle canvas alive.
+   */
+  if (!allowed || !everPast) return null;
 
   return (
     <div
       aria-hidden
-      className="fixed bottom-20 left-1/2 z-20 -translate-x-1/2"
+      className="reveal-fade fixed bottom-20 left-1/2 z-20 -translate-x-1/2"
+      style={{
+        opacity: past ? 1 : 0,
+        pointerEvents: past ? "auto" : "none",
+      }}
     >
       <div className="h-25">
         <Scene />

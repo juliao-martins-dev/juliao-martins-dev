@@ -22,6 +22,8 @@ export default function HeroRoleMorph() {
   const copy = heroCopy[isHeroLocale(locale) ? locale : "en"];
 
   const scope = useRef<HTMLDivElement | null>(null);
+  /** Latched once the intro finishes, so a re-split can never replay it. */
+  const hasPlayed = useRef(false);
 
   useGSAP(
     () => {
@@ -93,16 +95,13 @@ export default function HeroRoleMorph() {
 
             // Carry the playhead across a re-split (a font swap or a resize)
             // so the hold restarts from where it was rather than from zero.
-            const elapsed = timeline ? timeline.totalTime() : 0;
+            const elapsed = timeline ? timeline.time() : 0;
             timeline?.kill();
 
             const tl = gsap.timeline({
-              // Requested explicitly: the headline cycles A <-> B indefinitely.
-              // Note this is only ever built inside the no-preference branch —
-              // an endlessly animating headline is exactly what
-              // prefers-reduced-motion exists to suppress.
-              repeat: -1,
-              yoyo: true,
+              onComplete: () => {
+                hasPlayed.current = true;
+              },
             });
 
             tl.fromTo(
@@ -119,13 +118,23 @@ export default function HeroRoleMorph() {
 
             // State A masks out upward. Each char and line rides up inside its
             // own SplitText mask, so nothing bleeds outside the slot.
+            // Split-flap: the char rotates away on its X axis as it rides up
+            // inside its mask. transformOrigin is pushed back in Z so the flip
+            // pivots on the "hinge" rather than through the glyph's middle.
             tl.to(
               roleA.chars,
               {
                 yPercent: hero.outShift,
+                rotationX: hero.flipOut,
+                // Per-element, not a CSS `perspective` on an ancestor: the char
+                // sits inside a SplitText mask wrapper, and CSS perspective
+                // only reaches direct children, so an ancestor value would
+                // leave the flip looking like a flat squash.
+                transformPerspective: hero.perspective,
+                transformOrigin: "50% 100% -0.5em",
                 duration: hero.stateOut,
                 ease: ease.in,
-                stagger: { amount: staggerAmount.tight },
+                stagger: { amount: staggerAmount.tight, from: "start" },
               },
               atOut
             );
@@ -149,12 +158,19 @@ export default function HeroRoleMorph() {
             // than a crossfade.
             tl.fromTo(
               roleB.chars,
-              { yPercent: hero.inShift },
+              {
+                yPercent: hero.inShift,
+                rotationX: hero.flipIn,
+                transformPerspective: hero.perspective,
+              },
               {
                 yPercent: 0,
+                rotationX: 0,
+                transformPerspective: hero.perspective,
+                transformOrigin: "50% 0% -0.5em",
                 duration: hero.stateIn,
                 ease: ease.out,
-                stagger: { amount: staggerAmount.base },
+                stagger: { amount: staggerAmount.base, from: "start" },
               },
               atIn
             );
@@ -171,17 +187,14 @@ export default function HeroRoleMorph() {
               atIn
             );
 
-            // Empty tween purely to extend the timeline past state B's arrival.
-            // yoyo reverses through it, giving B the same contiguous dwell as A.
-            tl.to({}, { duration: hero.holdB });
-
             timeline = tl;
 
-            // Carry the playhead across a re-split so a resize or font swap does
-            // not visibly restart the cycle. totalTime (not time) because the
-            // timeline repeats: `time` is position within one iteration.
-            if (elapsed > 0) {
-              tl.totalTime(elapsed);
+            // Plays once. After that a re-split rebuilds the timeline only to
+            // land it on its final frame — the morph never repeats or loops.
+            if (hasPlayed.current) {
+              tl.progress(1);
+            } else if (elapsed > 0) {
+              tl.time(elapsed);
             }
           };
 
